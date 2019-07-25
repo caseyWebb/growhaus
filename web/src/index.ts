@@ -19,6 +19,7 @@ async function main() {
   punches.enableAll()
 
   Router.setConfig({
+    base: PUBLIC_PATH,
     preserveQueryStringOnNavigation: true
   })
 

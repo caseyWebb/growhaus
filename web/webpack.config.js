@@ -16,13 +16,15 @@ const { DefinePlugin, NamedModulesPlugin } = require('webpack')
 const PRODUCTION = process.env.NODE_ENV === 'production'
 const AVAILABLE_CPUS = Math.max(os.cpus().length - 2, 2) // leave 2 CPUS free
 
+const PUBLIC_PATH = PRODUCTION ? '/growhaus' : '/'
+
 module.exports = {
   mode: PRODUCTION ? 'production' : 'development',
   context: __dirname,
   entry: path.join(__dirname, 'src/index.ts'),
   output: {
     chunkFilename: '[name].[chunkhash].js',
-    publicPath: PRODUCTION ? '/growhaus' : '/'
+    publicPath: PUBLIC_PATH
   },
   optimization: {
     splitChunks: {
@@ -84,7 +86,8 @@ module.exports = {
     // provide DEBUG constant to app, will be statically analyzable so `if (DEBUG)` statements
     // will be stripped out by the minifier in production builds
     new DefinePlugin({
-      DEBUG: !PRODUCTION
+      DEBUG: !PRODUCTION,
+      PUBLIC_PATH
     }),
 
     new ForkTsCheckerWebpackPlugin({
