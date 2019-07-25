@@ -28,7 +28,7 @@ module.exports = {
   entry: path.join(__dirname, 'src/index.ts'),
   output: {
     chunkFilename: '[name].[chunkhash].js',
-    publicPath: url.parse(WEB_UI_URL).pathname
+    publicPath: WEB_UI_URL ? url.parse(WEB_UI_URL).pathname : '/'
   },
   devServer: {
     port: WEB_UI_DEV_SERVER_PORT
