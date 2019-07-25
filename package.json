@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@types/jquery": "^3.3.30",
+    "dotenv": "^8.0.0",
     "eslint": "^6.0.1",
     "eslint-config-profiscience": "^3.0.0",
     "husky": "^3.0.1",

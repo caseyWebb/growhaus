@@ -11,6 +11,12 @@ import {
   createTitleRoutePlugin
 } from '@profiscience/knockout-contrib'
 
+function getBasePath() {
+  const el = document.createElement('a')
+  el.href = WEB_UI_URL
+  return el.pathname
+}
+
 async function main() {
   const { punches } = ko as any
 
@@ -19,7 +25,7 @@ async function main() {
   punches.enableAll()
 
   Router.setConfig({
-    base: PUBLIC_PATH,
+    base: getBasePath(),
     preserveQueryStringOnNavigation: true
   })
 

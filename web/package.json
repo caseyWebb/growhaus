@@ -4,9 +4,8 @@
   "private": true,
   "author": "Casey Webb (https://caseyWebb.xyz)",
   "scripts": {
-    "build": "NODE_ENV=production webpack -p",
-    "image": "docker build -t growhaus-web .",
-    "develop": "NODE_ENV=development webpack-dev-server --hot"
+    "build": "webpack -p",
+    "develop": "webpack-dev-server --hot"
   },
   "dependencies": {
     "@profiscience/knockout-contrib": "^2.0.13",

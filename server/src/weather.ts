@@ -1,10 +1,8 @@
 import autobind from 'autobind-decorator'
 import fetch from 'node-fetch'
 
-import { DARK_SKY_API_KEY } from './config'
+import { DARK_SKY_API_KEY, DARK_SKY_LOCATION } from './config'
 import { Subscribable } from './subscribable'
-
-const LOCATION = '32.755489,-97.330765' // Fort Worth, TX
 
 type DarkSkyResponse = {
   currently: {
@@ -37,7 +35,7 @@ class Weather extends Subscribable {
   @autobind
   private async reloadData() {
     const data = (await fetch(
-      `https://api.darksky.net/forecast/${DARK_SKY_API_KEY}/${LOCATION}?exclude=minutely,daily,alerts,flags`
+      `https://api.darksky.net/forecast/${DARK_SKY_API_KEY}/${DARK_SKY_LOCATION}?exclude=minutely,daily,alerts,flags`
     ).then((r) => r.json())) as DarkSkyResponse
     this.current = {
       uvIndex: data.currently.uvIndex,

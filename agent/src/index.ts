@@ -1,4 +1,4 @@
-import * as config from './config'
+import { DRIVER_PWM_PIN, SERVER_URL, AGENT_NAME } from './config'
 import { LedDriver } from './driver'
 import { LightSchedule } from './schedule'
 import { Socket, IncomingEvent } from './socket'
@@ -6,10 +6,8 @@ import { Socket, IncomingEvent } from './socket'
 main()
 
 async function main() {
-  const driver = new LedDriver(config.DRIVER_PWM_PIN)
-  const socket = new Socket(
-    `ws://${config.SERVER_HOST}/agent/${config.AGENT_NAME}`
-  )
+  const driver = new LedDriver(DRIVER_PWM_PIN)
+  const socket = new Socket(`${SERVER_URL}/agent/${AGENT_NAME}`)
   const offlineFallbackSchedule = new LightSchedule()
 
   process.on('SIGINT', () => driver.setBrightness(100))

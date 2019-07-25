@@ -4,6 +4,9 @@
 
 const os = require('os')
 const path = require('path')
+const url = require('url')
+const { mapValues } = require('lodash/fp')
+const dotenv = require('dotenv')
 // @ts-ignore
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 // @ts-ignore
@@ -13,10 +16,11 @@ const ScriptExtPlugin = require('script-ext-html-webpack-plugin')
 
 const { DefinePlugin, NamedModulesPlugin } = require('webpack')
 
-const PRODUCTION = process.env.NODE_ENV === 'production'
-const AVAILABLE_CPUS = Math.max(os.cpus().length - 2, 2) // leave 2 CPUS free
+dotenv.config({ path: path.resolve(__dirname, '../.env') })
 
-const PUBLIC_PATH = PRODUCTION ? '/growhaus' : '/'
+const { NODE_ENV, SERVER_URL, WEB_UI_DEV_SERVER_PORT, WEB_UI_URL } = process.env
+const PRODUCTION = NODE_ENV === 'production'
+const AVAILABLE_CPUS = Math.max(os.cpus().length - 2, 2) // leave 2 CPUS free
 
 module.exports = {
   mode: PRODUCTION ? 'production' : 'development',
@@ -24,7 +28,10 @@ module.exports = {
   entry: path.join(__dirname, 'src/index.ts'),
   output: {
     chunkFilename: '[name].[chunkhash].js',
-    publicPath: PUBLIC_PATH
+    publicPath: url.parse(WEB_UI_URL).pathname
+  },
+  devServer: {
+    port: WEB_UI_DEV_SERVER_PORT
   },
   optimization: {
     splitChunks: {
@@ -85,10 +92,13 @@ module.exports = {
   plugins: [
     // provide DEBUG constant to app, will be statically analyzable so `if (DEBUG)` statements
     // will be stripped out by the minifier in production builds
-    new DefinePlugin({
-      DEBUG: !PRODUCTION,
-      PUBLIC_PATH: JSON.stringify(PUBLIC_PATH)
-    }),
+    new DefinePlugin(
+      mapValues(JSON.stringify, {
+        DEBUG: !PRODUCTION,
+        SERVER_URL,
+        WEB_UI_URL
+      })
+    ),
 
     new ForkTsCheckerWebpackPlugin({
       async: false,

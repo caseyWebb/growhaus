@@ -5,7 +5,6 @@
   "author": "Casey Webb (https://caseyWebb.xyz)",
   "scripts": {
     "build": "tsc -b",
-    "image": "docker build -t growhaus-server .",
     "develop": "concurrently --kill-others \"yarn build -w --preserveWatchOutput\" \"nodemon --delay 5 ./dist/index.js\""
   },
   "dependencies": {
@@ -25,6 +24,7 @@
     "@types/node": "^12.6.8",
     "@types/node-fetch": "^2.3.7",
     "concurrently": "^4.1.1",
+    "nodemon": "^1.19.1",
     "typescript": "^3.5.3"
   }
 }

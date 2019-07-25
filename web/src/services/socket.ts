@@ -18,7 +18,7 @@ class Socket {
   private async connect() {
     console.log(`Attempting to connect to API server...`)
     this.connectionPromise = new Promise((resolve) => {
-      this.ws = new WebSocket('ws://localhost:3000/web')
+      this.ws = new WebSocket(`${SERVER_URL}/web`)
       this.ws.addEventListener('message', this.wsMessage)
       this.ws.addEventListener('close', this.wsClose)
       this.ws.addEventListener('error', () => {
