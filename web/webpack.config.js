@@ -87,7 +87,7 @@ module.exports = {
     // will be stripped out by the minifier in production builds
     new DefinePlugin({
       DEBUG: !PRODUCTION,
-      PUBLIC_PATH
+      PUBLIC_PATH: JSON.stringify(PUBLIC_PATH)
     }),
 
     new ForkTsCheckerWebpackPlugin({
