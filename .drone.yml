@@ -31,6 +31,9 @@ image_pull_secrets:
 steps:
   - name: publish:agent
     image: containers.caseywebb.xyz/growhaus/builder
+    when:
+      branch:
+        - master
     environment:
       NPM_TOKEN:
         from_secret: npm_token
@@ -50,6 +53,9 @@ image_pull_secrets:
 steps:
   - name: publish:server
     image: plugins/docker
+    when:
+      branch:
+        - master
     settings:
       repo: containers.caseywebb.xyz/growhaus/server
       target: server
@@ -82,6 +88,9 @@ image_pull_secrets:
 steps:
   - name: publish:web
     image: plugins/docker
+    when:
+      branch:
+        - master
     settings:
       repo: containers.caseywebb.xyz/growhaus/web
       target: web
