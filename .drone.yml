@@ -6,9 +6,9 @@ steps:
   - name: build
     image: plugins/docker
     settings:
-      repo: containers.caseywebb.xyz/growhaus/builder
-      target: builder
-      cache_from: containers.caseywebb.xyz/growhaus/builder
+      repo: containers.caseywebb.xyz/growhaus/dist
+      target: dist
+      cache_from: containers.caseywebb.xyz/growhaus/dist
       registry: containers.caseywebb.xyz
       username:
         from_secret: docker_user
@@ -24,7 +24,7 @@ image_pull_secrets:
   - docker_pull_secrets
 steps:
   - name: publish:agent
-    image: containers.caseywebb.xyz/growhaus/builder
+    image: containers.caseywebb.xyz/growhaus/dist
     environment:
       NPM_TOKEN:
         from_secret: npm_token
@@ -46,7 +46,7 @@ steps:
     settings:
       repo: containers.caseywebb.xyz/growhaus/server
       target: server
-      cache_from: containers.caseywebb.xyz/growhaus/builder
+      cache_from: containers.caseywebb.xyz/growhaus/dist
       registry: containers.caseywebb.xyz
       username:
         from_secret: docker_user
@@ -78,7 +78,7 @@ steps:
     settings:
       repo: containers.caseywebb.xyz/growhaus/web
       target: web
-      cache_from: containers.caseywebb.xyz/growhaus/builder
+      cache_from: containers.caseywebb.xyz/growhaus/dist
       registry: containers.caseywebb.xyz
       username:
         from_secret: docker_user
