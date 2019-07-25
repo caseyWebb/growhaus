@@ -18,7 +18,6 @@ COPY web/tsconfig.json web/webpack.config.js ./web/
 RUN yarn build
 RUN support/nohoist.js
 RUN yarn install --production --pure-lockfile
-COPY .git ./.git
 
 FROM node:alpine as server
 WORKDIR /repo
