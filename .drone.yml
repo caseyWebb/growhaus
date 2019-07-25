@@ -5,6 +5,9 @@ image_pull_secrets:
 steps:
   - name: build
     image: plugins/docker
+    when:
+      branch:
+        - master
     environment:
       NODE_ENV: production
       DARK_SKY_API_KEY:
