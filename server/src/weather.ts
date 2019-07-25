@@ -1,22 +1,12 @@
 import autobind from 'autobind-decorator'
 import fetch from 'node-fetch'
 
+import { DarkSkyResponse, WeatherData } from '@caseywebb/growhaus'
+
 import { DARK_SKY_API_KEY, DARK_SKY_LOCATION } from './config'
 import { Subscribable } from './subscribable'
 
-type DarkSkyResponse = {
-  currently: {
-    uvIndex: number
-  }
-  hourly: {
-    data: {
-      time: number
-      uvIndex: number
-    }[]
-  }
-}
-
-class Weather extends Subscribable {
+class Weather extends Subscribable implements WeatherData {
   public current = {
     brightness: 100,
     uvIndex: 10

@@ -1,0 +1,22 @@
+{
+  "name": "@caseywebb/growhaus",
+  "version": "0.0.0",
+  "private": true,
+  "author": "Casey Webb (https://caseyWebb.xyz)",
+  "main": "dist/node/index.js",
+  "module": "dist/browser/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "build": "yarn build:node; yarn build:browser",
+    "build:node": "tsc --declaration --declarationMap --declarationDir dist/types --module commonjs --outDir dist/node",
+    "build:browser": "tsc --module esnext --outDir dist/browser",
+    "develop": "concurrently \"yarn build:node --watch\" \"yarn build:browser --watch\""
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.1",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  }
+}

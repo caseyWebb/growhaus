@@ -11,10 +11,12 @@ export const websocketRoutes = [
 
   route.all('/web', (ctx) => {
     const sendWeatherData = () => {
-      ctx.websocket.send({
-        event: 'weather',
-        data: weather
-      })
+      ctx.websocket.send(
+        JSON.stringify({
+          event: 'weather',
+          data: weather
+        })
+      )
     }
     sendWeatherData()
     weather.subscribe(sendWeatherData)

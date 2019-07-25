@@ -5,7 +5,7 @@
   "author": "Casey Webb (https://caseyWebb.xyz)",
   "scripts": {
     "build": "tsc -b",
-    "develop": "concurrently --kill-others \"yarn build -w --preserveWatchOutput\" \"nodemon --delay 5 ./dist/index.js\""
+    "develop": "concurrently --kill-others \"yarn build -w --preserveWatchOutput\" \"nodemon --watch ./dist ./dist/index.js\""
   },
   "dependencies": {
     "autobind-decorator": "^2.4.0",
@@ -17,6 +17,7 @@
     "tslib": "^1.10.0"
   },
   "devDependencies": {
+    "@caseywebb/growhaus": "0.0.0",
     "@types/dotenv": "^6.1.1",
     "@types/koa": "^2.0.49",
     "@types/koa-route": "^3.2.4",

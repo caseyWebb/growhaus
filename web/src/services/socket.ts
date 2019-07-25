@@ -1,9 +1,15 @@
 import autobind from 'autobind-decorator'
 
+import { WebApiEvents, WebApiMessage, WeatherData } from '@caseywebb/growhaus'
+
+type Handler<T> = (data: T) => void
+
 class Socket {
   private heartbeatTimeout?: NodeJS.Timer
   private ws!: WebSocket
-  private onMessageHandlers: { [k: string]: any } = {}
+  private onMessageHandlers = {
+    [WebApiEvents.WeatherData]: [] as Handler<WeatherData>[]
+  }
   private connectionPromise: Promise<void> = Promise.resolve()
 
   constructor() {
@@ -15,11 +21,20 @@ class Socket {
     this.ws.send(message)
   }
 
+  public on(
+    eventType: WebApiEvents.WeatherData,
+    handler: (data: WeatherData) => void
+  ) {
+    this.onMessageHandlers[eventType].push(handler)
+  }
+
   private async connect() {
     console.log(`Attempting to connect to API server...`)
     this.connectionPromise = new Promise((resolve) => {
       this.ws = new WebSocket(`${SERVER_URL}/web`)
-      this.ws.addEventListener('message', this.wsMessage)
+      this.ws.addEventListener('message', ({ data }) =>
+        this.wsMessage(JSON.parse(data) as WebApiMessage)
+      )
       this.ws.addEventListener('close', this.wsClose)
       this.ws.addEventListener('error', () => {
         /* noop */
@@ -39,7 +54,7 @@ class Socket {
   }
 
   @autobind
-  private async wsMessage(message: any) {
+  private async wsMessage(message: WebApiMessage) {
     const handlers: any[] = this.onMessageHandlers[message.event]
     await Promise.all(handlers.map((h) => h(message)))
   }

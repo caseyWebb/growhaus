@@ -5,6 +5,7 @@
   "license": "WTFPL",
   "workspaces": {
     "packages": [
+      "lib",
       "agent",
       "server",
       "web"
