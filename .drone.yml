@@ -1,0 +1,98 @@
+kind: pipeline
+name: build
+image_pull_secrets:
+  - docker_pull_secrets
+steps:
+  - name: build
+    image: plugins/docker
+    settings:
+      repo: containers.caseywebb.xyz/growhaus/builder
+      target: builder
+      cache_from: containers.caseywebb.xyz/growhaus/builder
+      registry: containers.caseywebb.xyz
+      username:
+        from_secret: docker_user
+      password:
+        from_secret: docker_pass
+
+---
+kind: pipeline
+name: agent
+depends_on:
+  - build
+image_pull_secrets:
+  - docker_pull_secrets
+steps:
+  - name: publish:agent
+    image: containers.caseywebb.xyz/growhaus/builder
+    environment:
+      NPM_TOKEN:
+        from_secret: npm_token
+    commands:
+      - cd /repo/agent
+      - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
+      - npx fluid-publish changesCmd=true devTag=latest
+
+---
+kind: pipeline
+name: server
+depends_on:
+  - build
+image_pull_secrets:
+  - docker_pull_secrets
+steps:
+  - name: publish:server
+    image: plugins/docker
+    settings:
+      repo: containers.caseywebb.xyz/growhaus/server
+      target: server
+      cache_from: containers.caseywebb.xyz/growhaus/builder
+      registry: containers.caseywebb.xyz
+      username:
+        from_secret: docker_user
+      password:
+        from_secret: docker_pass
+  - name: deploy:server
+    image: appleboy/drone-ssh
+    settings:
+      host: ssh.caseywebb.xyz
+      username: growhaus
+      key:
+        from_secret: ssh_key
+      port: 22
+      script:
+        - update_growhaus_server
+    depends_on:
+      - publish:server
+
+---
+kind: pipeline
+name: web
+depends_on:
+  - build
+image_pull_secrets:
+  - docker_pull_secrets
+steps:
+  - name: publish:web
+    image: plugins/docker
+    settings:
+      repo: containers.caseywebb.xyz/growhaus/web
+      target: web
+      cache_from: containers.caseywebb.xyz/growhaus/builder
+      registry: containers.caseywebb.xyz
+      username:
+        from_secret: docker_user
+      password:
+        from_secret: docker_pass
+  - name: deploy:web
+    image: appleboy/drone-ssh
+    settings:
+      host: ssh.caseywebb.xyz
+      username: growhaus
+      key:
+        from_secret: ssh_key
+      port: 22
+      script:
+        - update_growhaus_web
+    depends_on:
+      - publish:web

@@ -1,0 +1,10 @@
+**/.cache
+**/coverage
+**/dist
+**/node_modules
+**/tsconfig.tsbuildinfo
+
+**/*.log
+
+.drone.yml
+Dockerfile

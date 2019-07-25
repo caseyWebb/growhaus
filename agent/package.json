@@ -1,0 +1,27 @@
+{
+  "name": "@caseywebb/growhaus-agent",
+  "version": "0.0.0",
+  "author": "Casey Webb (https://caseyWebb.xyz)",
+  "bin": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "start": "node dist/index.js"
+  },
+  "optionalDependencies": {
+    "pigpio": "^1.2.0"
+  },
+  "dependencies": {
+    "autobind-decorator": "^2.4.0",
+    "dotenv": "^8.0.0",
+    "ws": "^7.1.0"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/node": "^12.6.8",
+    "@types/pigpio": "^1.2.1",
+    "@types/ws": "^6.0.1"
+  }
+}

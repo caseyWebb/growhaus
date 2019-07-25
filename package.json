@@ -1,0 +1,67 @@
+{
+  "private": true,
+  "name": "@caseywebb/growhaus",
+  "version": "0.0.0",
+  "license": "WTFPL",
+  "workspaces": {
+    "packages": [
+      "agent",
+      "server",
+      "web"
+    ],
+    "nohoist": [
+      "**/@types/**"
+    ]
+  },
+  "scripts": {
+    "build": "lerna run build",
+    "format": "pretty-quick",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.3.30",
+    "eslint": "^6.0.1",
+    "eslint-config-profiscience": "^3.0.0",
+    "husky": "^3.0.1",
+    "is-docker": "^2.0.0",
+    "jest": "^24.8.0",
+    "lerna": "^3.16.1",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
+    "ts-jest": "^24.0.2"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coveragePathIgnorePatterns": [
+      "/dist/",
+      "/node_modules/"
+    ],
+    "coverageReporters": [
+      "lcov",
+      "html"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "ts"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "isolatedModules": true,
+        "diagnostics": false
+      }
+    }
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "semi": false,
+    "singleQuote": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn format --staged"
+    }
+  }
+}

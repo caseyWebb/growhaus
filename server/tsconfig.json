@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "importHelpers": true,
+    "declaration": true,
+    "declarationMap": true,
+    "strict": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "experimentalDecorators": true
+  }
+}
