@@ -19,14 +19,14 @@ type DarkSkyResponse = {
 }
 
 class Weather extends Subscribable {
-  public current!: {
-    brightness: number
-    uvIndex: number
+  public current = {
+    brightness: 100,
+    uvIndex: 10
   }
-  public hourly!: {
+  public hourly: {
     time: number
     uvIndex: number
-  }[]
+  }[] = []
 
   constructor() {
     super()
