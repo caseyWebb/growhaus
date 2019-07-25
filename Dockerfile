@@ -26,6 +26,3 @@ COPY --from=builder /repo/server/node_modules ./node_modules
 
 FROM nginx:alpine as web
 COPY --from=builder /repo/web/dist /usr/share/nginx/html
-
-FROM node:lts-alpine as dist
-COPY --from=builder /repo /repo
