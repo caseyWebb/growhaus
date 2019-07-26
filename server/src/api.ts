@@ -5,7 +5,7 @@ import { weather } from './weather'
 export const websocketRoutes = [
   route.all('/agent/:name', (ctx, name: string) => {
     // const sendBrightness = () => ctx.websocket.send(weather.current.brightness)
-    const sendBrightness = () => ctx.websocket.send(10)
+    const sendBrightness = () => ctx.websocket.send(11)
     sendBrightness()
     // weather.subscribe(sendBrightness)
   }),
