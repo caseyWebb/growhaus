@@ -17,7 +17,6 @@ steps:
       target: builder
       cache_from: containers.caseywebb.xyz/growhaus/builder
       registry: containers.caseywebb.xyz
-      custom_dns: 10.0.0.136
       username:
         from_secret: docker_user
       password:
@@ -101,7 +100,6 @@ steps:
       target: server
       cache_from: containers.caseywebb.xyz/growhaus/builder
       registry: containers.caseywebb.xyz
-      custom_dns: 10.0.0.136
       username:
         from_secret: docker_user
       password:
@@ -137,7 +135,6 @@ steps:
       target: web
       cache_from: containers.caseywebb.xyz/growhaus/builder
       registry: containers.caseywebb.xyz
-      custom_dns: 10.0.0.136
       username:
         from_secret: docker_user
       password:
