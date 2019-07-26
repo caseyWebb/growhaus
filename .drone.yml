@@ -69,6 +69,18 @@ steps:
       - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
       - yarn add @caseywebb/growhaus@$DRONE_COMMIT
       - npx fluid-publish changesCmd=true devTag=latest
+  - name: deploy:agent
+    image: appleboy/drone-ssh
+    settings:
+      host: ssh.caseywebb.xyz
+      username: growhaus
+      key:
+        from_secret: ssh_key
+      port: 22
+      script:
+        - update_growhaus_agent
+    depends_on:
+      - publish:web
 ---
 kind: pipeline
 name: server
