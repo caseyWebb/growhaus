@@ -8,21 +8,19 @@ steps:
     when:
       branch:
         - master
+    environment:
+      NODE_ENV: production
+      SERVER_URL: ws://apps.caseywebb.xyz/growhaus/api
+      WEB_UI_URL: https://apps.caseywebb.xyz/growhaus
     settings:
       repo: containers.caseywebb.xyz/growhaus/builder
       target: builder
       cache_from: containers.caseywebb.xyz/growhaus/builder
       registry: containers.caseywebb.xyz
-      environment:
-        FOOBAR: BAZQUX
       username:
         from_secret: docker_user
       password:
         from_secret: docker_pass
-      build_args:
-        - NODE_ENV=production
-        - SERVER_URL=ws://apps.caseywebb.xyz/growhaus/api
-        - WEB_UI_URL=https://apps.caseywebb.xyz/growhaus
 
 ---
 kind: pipeline
