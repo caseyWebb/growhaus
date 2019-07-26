@@ -1,6 +1,5 @@
 {
   "name": "@caseywebb/growhaus",
-  "version": "0.0.0",
   "private": true,
   "author": "Casey Webb (https://caseyWebb.xyz)",
   "main": "dist/node/index.js",
