@@ -4,7 +4,8 @@ image_pull_secrets:
   - docker_pull_secrets
 steps:
   - name: build
-    image: plugins/docker
+    image: plugins/docker:18.09
+    privileged: true
     when:
       branch:
         - master
@@ -88,7 +89,8 @@ image_pull_secrets:
   - docker_pull_secrets
 steps:
   - name: publish:server
-    image: plugins/docker
+    image: plugins/docker:18.09
+    privileged: true
     when:
       branch:
         - master
@@ -126,7 +128,8 @@ image_pull_secrets:
   - docker_pull_secrets
 steps:
   - name: publish:web
-    image: plugins/docker
+    image: plugins/docker:18.09
+    privileged: true
     when:
       branch:
         - master
