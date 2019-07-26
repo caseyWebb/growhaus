@@ -15,5 +15,5 @@ app.ws.use(async (ctx, next) => {
 websocketRoutes.forEach((r) => app.ws.use(r))
 
 app.listen(PORT).on('listening', () => {
-  console.log('Server listening on port', PORT)
+  console.log(`Server listening on port ${PORT}`)
 })
