@@ -26,6 +26,7 @@ module.exports = {
   mode: PRODUCTION ? 'production' : 'development',
   context: __dirname,
   entry: path.join(__dirname, 'src/index.ts'),
+  devtool: 'source-map',
   output: {
     chunkFilename: '[name].[chunkhash].js',
     publicPath: WEB_UI_URL ? url.parse(WEB_UI_URL).pathname : '/'
