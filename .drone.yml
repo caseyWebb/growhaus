@@ -80,7 +80,7 @@ steps:
       script:
         - update_growhaus_agent
     depends_on:
-      - publish:web
+      - publish:agent
 ---
 kind: pipeline
 name: server
