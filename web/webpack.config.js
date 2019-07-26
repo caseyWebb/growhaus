@@ -22,8 +22,6 @@ const { NODE_ENV, SERVER_URL, WEB_UI_DEV_SERVER_PORT, WEB_UI_URL } = process.env
 const PRODUCTION = NODE_ENV === 'production'
 const AVAILABLE_CPUS = Math.max(os.cpus().length - 2, 2) // leave 2 CPUS free
 
-console.log(`\nBulding for backend: ${SERVER_URL}\n`)
-
 module.exports = {
   mode: PRODUCTION ? 'production' : 'development',
   context: __dirname,
