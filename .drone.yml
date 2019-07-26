@@ -13,16 +13,16 @@ steps:
       target: builder
       cache_from: containers.caseywebb.xyz/growhaus/builder
       registry: containers.caseywebb.xyz
+      environment:
+        FOOBAR: BAZQUX
       username:
         from_secret: docker_user
       password:
         from_secret: docker_pass
       build_args:
-        NODE_ENV: production
-        DARK_SKY_API_KEY:
-          from_secret: dark_sky_api_key
-        SERVER_URL: ws://apps.caseywebb.xyz/growhaus/api
-        WEB_UI_URL: https://apps.caseywebb.xyz/growhaus
+        - NODE_ENV=production
+        - SERVER_URL=ws://apps.caseywebb.xyz/growhaus/api
+        - WEB_UI_URL=https://apps.caseywebb.xyz/growhaus
 
 ---
 kind: pipeline
@@ -94,6 +94,9 @@ steps:
     when:
       branch:
         - master
+    environment:
+      DARK_SKY_API_KEY:
+        from_secret: dark_sky_api_key
     settings:
       repo: containers.caseywebb.xyz/growhaus/server
       target: server
