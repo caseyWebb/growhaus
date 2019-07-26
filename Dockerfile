@@ -5,11 +5,14 @@ RUN apk add git python2
 COPY support ./support
 COPY lerna.json package.json yarn.lock ./
 COPY agent/package.json agent/package.json
+COPY lib/package.json lib/package.json
 COPY server/package.json server/package.json
 COPY web/package.json web/package.json
 RUN yarn install --pure-lockfile
 COPY agent/src ./agent/src
 COPY agent/tsconfig.json ./agent
+COPY lib/src ./lib/src
+COPY lib/tsconfig.json ./lib
 COPY server/src ./server/src
 COPY server/tsconfig.json ./server
 COPY web/@types ./web/@types

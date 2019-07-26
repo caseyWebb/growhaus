@@ -26,9 +26,32 @@ steps:
 
 ---
 kind: pipeline
+name: lib
+depends_on:
+  - build
+image_pull_secrets:
+  - docker_pull_secrets
+steps:
+  - name: publish:lib
+    image: containers.caseywebb.xyz/growhaus/builder
+    when:
+      branch:
+        - master
+    environment:
+      NPM_TOKEN:
+        from_secret: npm_token
+    commands:
+      - mv ./.git /repo/lib
+      - cd /repo/lib
+      - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
+      - npx fluid-publish changesCmd=true devTag=$DRONE_COMMIT
+
+---
+kind: pipeline
 name: agent
 depends_on:
   - build
+  - lib
 image_pull_secrets:
   - docker_pull_secrets
 steps:
@@ -44,8 +67,8 @@ steps:
       - mv ./.git /repo/agent
       - cd /repo/agent
       - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
+      - yarn add @caseywebb/growhaus@$DRONE_COMMIT
       - npx fluid-publish changesCmd=true devTag=latest
-
 ---
 kind: pipeline
 name: server
