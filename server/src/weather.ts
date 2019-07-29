@@ -24,6 +24,9 @@ class Weather extends Subscribable implements WeatherData {
 
   @autobind
   private async reloadData() {
+    if (!DARK_SKY_API_KEY) {
+      throw new Error('DARK_SKY_API_KEY is not configured')
+    }
     const data = (await fetch(
       `https://api.darksky.net/forecast/${DARK_SKY_API_KEY}/${DARK_SKY_LOCATION}?exclude=minutely,daily,alerts,flags`
     ).then((r) => r.json())) as DarkSkyResponse
