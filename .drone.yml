@@ -5,14 +5,9 @@ image_pull_secrets:
 steps:
   - name: build
     image: plugins/docker:18.09
-    privileged: true
     when:
       branch:
         - master
-    environment:
-      NODE_ENV: production
-      SERVER_URL: ws://apps.caseywebb.xyz/growhaus/api
-      WEB_UI_URL: https://apps.caseywebb.xyz/growhaus
     settings:
       repo: containers.caseywebb.xyz/growhaus/builder
       target: builder
@@ -90,7 +85,6 @@ image_pull_secrets:
 steps:
   - name: publish:server
     image: plugins/docker:18.09
-    privileged: true
     when:
       branch:
         - master
@@ -129,7 +123,6 @@ image_pull_secrets:
 steps:
   - name: publish:web
     image: plugins/docker:18.09
-    privileged: true
     when:
       branch:
         - master
