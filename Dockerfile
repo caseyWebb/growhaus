@@ -8,6 +8,7 @@ COPY lib/package.json lib/package.json
 COPY server/package.json server/package.json
 COPY web/package.json web/package.json
 RUN yarn install --pure-lockfile
+COPY agent/bin ./agent/bin
 COPY agent/src ./agent/src
 COPY agent/tsconfig.json ./agent
 COPY lib/src ./lib/src
