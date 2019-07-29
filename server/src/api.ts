@@ -10,6 +10,11 @@ export const websocketRoutes = [
       console.log('Agent disconnected:', name)
     })
 
+    ctx.websocket.on('open', () => {
+      console.log('Socket connection opened:', name)
+      sendBrightness()
+    })
+
     // const sendBrightness = () => ctx.websocket.send(weather.current.brightness)
     const sendBrightness = () =>
       ctx.websocket.send({
@@ -17,6 +22,8 @@ export const websocketRoutes = [
         brightness: 10,
         duration: 5
       })
+
+    console.log('Setting brightness to', 10)
     sendBrightness()
     // weather.subscribe(sendBrightness)
   }),
