@@ -1,5 +1,5 @@
-{{#if weatherReady}}
+{{#if weather.ready}}
 <pre>
-  {{ JSON.stringify(weather(), null, 2) }}
+  {{ JSON.stringify(weather.data(), null, 2) }}
 </pre>
-{{/if}}
+{{/if}} {{#ifnot weather.ready}} Loading weather data... {{/ifnot}}
