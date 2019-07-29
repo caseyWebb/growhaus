@@ -21,7 +21,9 @@ export class Socket {
     [IncomingEvent.Brightness]: [] as ((m: ManualBrightnessMessage) => void)[]
   }
 
-  constructor(private readonly url: string) {}
+  constructor(private readonly url: string) {
+    this.connect()
+  }
 
   public on(
     eventType: IncomingEvent.Brightness,
