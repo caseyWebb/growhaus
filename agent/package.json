@@ -2,7 +2,9 @@
   "name": "@caseywebb/growhaus-agent",
   "version": "0.0.0",
   "author": "Casey Webb (https://caseyWebb.xyz)",
-  "bin": "./dist/index.js",
+  "bin": {
+    "growhaus-agent": "./bin/growhaus-agent"
+  },
   "files": [
     "dist"
   ],
