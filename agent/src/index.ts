@@ -19,9 +19,5 @@ async function main() {
     driver.setBrightness(m.brightness)
   })
 
-  socket.on(IncomingEvent.OfflineSchedule, (s) =>
-    offlineFallbackSchedule.set(s.schedule)
-  )
-
   offlineFallbackSchedule.subscribe(driver.setBrightness)
 }

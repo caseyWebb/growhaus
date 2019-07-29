@@ -45,13 +45,9 @@ export class LightSchedule {
     }, duration)
   }
 
-  public set(schedule: number[]) {
-    this.schedule = schedule
-    this.next()
-  }
-
   public subscribe(handler: (b: number) => void) {
     this.subscriptions.push(handler)
+    this.next()
   }
 
   private getCurrentBrightness() {

@@ -2,19 +2,13 @@ import autobind from 'autobind-decorator'
 import WebSocket from 'ws'
 
 export enum IncomingEvent {
-  Brightness = 'brightness',
-  OfflineSchedule = 'schedule'
+  Brightness = 'brightness'
 }
 
 export type ManualBrightnessMessage = {
   event: IncomingEvent.Brightness
   brightness: number
   duration: number
-}
-
-export type OfflineScheduleMessage = {
-  event: IncomingEvent.OfflineSchedule
-  schedule: number[]
 }
 
 /**
@@ -24,18 +18,11 @@ export class Socket {
   private ws!: WebSocket
   private heartbeatTimeout?: NodeJS.Timer
   private onMessageHandlers = {
-    [IncomingEvent.OfflineSchedule]: [] as ((
-      m: OfflineScheduleMessage
-    ) => void)[],
     [IncomingEvent.Brightness]: [] as ((m: ManualBrightnessMessage) => void)[]
   }
 
   constructor(private readonly url: string) {}
 
-  public on(
-    eventType: IncomingEvent.OfflineSchedule,
-    handler: (m: OfflineScheduleMessage) => void
-  ): void
   public on(
     eventType: IncomingEvent.Brightness,
     handler: (m: ManualBrightnessMessage) => void
@@ -83,9 +70,7 @@ export class Socket {
   }
 
   @autobind
-  private async wsMessage(
-    message: ManualBrightnessMessage | OfflineScheduleMessage
-  ) {
+  private async wsMessage(message: ManualBrightnessMessage) {
     const handlers: any[] = this.onMessageHandlers[message.event]
     await Promise.all(handlers.map((h) => h(message)))
   }
