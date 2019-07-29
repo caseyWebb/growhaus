@@ -19,6 +19,7 @@
   "dependencies": {
     "autobind-decorator": "^2.4.0",
     "dotenv": "^8.0.0",
+    "tslib": "^1.10.0",
     "ws": "^7.1.0"
   },
   "devDependencies": {
