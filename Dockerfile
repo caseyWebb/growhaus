@@ -26,10 +26,9 @@ RUN support/nohoist.js
 RUN yarn install --production --pure-lockfile
 
 FROM node:lts-alpine as server
-WORKDIR /repo
-COPY --from=builder /repo/server/dist ./
-COPY --from=builder /repo/server/node_modules ./node_modules
-CMD node /repo/server/dist/index.js
+COPY --from=builder /repo/server/dist /server
+COPY --from=builder /repo/server/node_modules ./server/node_modules
+CMD node /server/index.js
 
 FROM nginx:alpine as web
 COPY --from=builder /repo/web/dist /usr/share/nginx/html
