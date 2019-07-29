@@ -41,6 +41,7 @@ export class Socket {
     console.log('Socket connection disposed.')
   }
 
+  @autobind
   private connect() {
     console.log(`Attempting to connect to ${this.url}...`)
     this.ws = new WebSocket(this.url)
