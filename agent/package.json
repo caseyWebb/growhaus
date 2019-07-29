@@ -6,6 +6,7 @@
     "growhaus-agent": "./bin/growhaus-agent"
   },
   "files": [
+    "bin",
     "dist"
   ],
   "scripts": {
