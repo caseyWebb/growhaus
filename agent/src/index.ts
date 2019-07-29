@@ -12,10 +12,21 @@ async function main() {
   const socket = new Socket(`${SERVER_URL}/agent/${AGENT_NAME}`)
   const offlineFallbackSchedule = new LightSchedule()
 
-  process.on('SIGINT', () => {
-    console.log('Exiting...')
+  let forceQuit = false
+
+  const quit = () => {
+    if (forceQuit) {
+      process.exit()
+    } else {
+      forceQuit = true
+    }
+    console.log('Exiting... (Press ctrl+c again to force exit)')
     driver.setBrightness(100)
-  })
+    socket.dispose()
+    offlineFallbackSchedule.dispose()
+    process.off('SIGINT', quit)
+  }
+  process.on('SIGINT', quit)
 
   socket.on(IncomingEvent.Brightness, (m) => {
     // pause until 10 minutes after we should have received a new message

@@ -33,6 +33,14 @@ export class Socket {
     this.onMessageHandlers[eventType].push(handler)
   }
 
+  public dispose() {
+    console.log('Disposing socket connection...')
+    if (this.heartbeatTimeout) clearTimeout(this.heartbeatTimeout)
+    this.ws.off('close', this.wsClose)
+    this.ws.close()
+    console.log('Socket connection disposed.')
+  }
+
   private connect() {
     console.log(`Attempting to connect to ${this.url}...`)
     this.ws = new WebSocket(this.url)
@@ -74,6 +82,13 @@ export class Socket {
   @autobind
   private async wsMessage(message: ManualBrightnessMessage) {
     const handlers: any[] = this.onMessageHandlers[message.event]
-    await Promise.all(handlers.map((h) => h(message)))
+    if (!handlers) {
+      console.error(
+        'Received unknown message:',
+        JSON.stringify(message, null, 2)
+      )
+    } else {
+      await Promise.all(handlers.map((h) => h(message)))
+    }
   }
 }

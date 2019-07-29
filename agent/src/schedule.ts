@@ -3,8 +3,9 @@ import autobind from 'autobind-decorator'
 export class LightSchedule {
   private paused = false
   private pauseTimeout?: NodeJS.Timer
-  private subscriptions = [] as ((brightness: number) => void)[]
-  private schedule = [
+  private readonly updateInterval: NodeJS.Timer
+  private readonly subscriptions = [] as ((brightness: number) => void)[]
+  private readonly schedule = [
     10, // midnight
     10,
     10,
@@ -33,7 +34,7 @@ export class LightSchedule {
   ]
 
   constructor() {
-    setInterval(this.next, 60 * 1000 * 60)
+    this.updateInterval = setInterval(this.next, 60 * 1000 * 60)
   }
 
   public pause(duration: number) {
@@ -50,6 +51,13 @@ export class LightSchedule {
   public subscribe(handler: (b: number) => void) {
     this.subscriptions.push(handler)
     this.next()
+  }
+
+  public dispose() {
+    console.log('Disposing offline schedule...')
+    if (this.pauseTimeout) clearTimeout(this.pauseTimeout)
+    clearInterval(this.updateInterval)
+    console.log('Offline schedule disposed.')
   }
 
   private getCurrentBrightness() {
