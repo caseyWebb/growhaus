@@ -19,7 +19,7 @@ COPY web/@types ./web/@types
 COPY web/src ./web/src
 COPY web/tsconfig.json web/webpack.config.js ./web/
 ENV NODE_ENV production
-ENV SERVER_URL ws://apps.caseywebb.xyz/growhaus/api
+ENV SERVER_URL wss://apps.caseywebb.xyz/growhaus/api
 ENV WEB_UI_URL https://apps.caseywebb.xyz/growhaus
 RUN yarn build
 RUN support/nohoist.js
