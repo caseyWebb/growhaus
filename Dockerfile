@@ -1,8 +1,5 @@
 FROM node:lts-alpine as builder
 WORKDIR /repo
-ENV NODE_ENV production
-ENV SERVER_URL ws://apps.caseywebb.xyz/growhaus/api
-ENV WEB_UI_URL https://apps.caseywebb.xyz/growhaus
 RUN apk add git python2
 COPY support ./support
 COPY lerna.json package.json yarn.lock ./
@@ -20,6 +17,9 @@ COPY server/tsconfig.json ./server
 COPY web/@types ./web/@types
 COPY web/src ./web/src
 COPY web/tsconfig.json web/webpack.config.js ./web/
+ENV NODE_ENV production
+ENV SERVER_URL ws://apps.caseywebb.xyz/growhaus/api
+ENV WEB_UI_URL https://apps.caseywebb.xyz/growhaus
 RUN yarn build
 RUN support/nohoist.js
 RUN yarn install --production --pure-lockfile
