@@ -18,18 +18,27 @@ class Weather extends Subscribable implements WeatherData {
 
   constructor() {
     super()
+    if (!DARK_SKY_API_KEY) {
+      throw new Error('DARK_SKY_API_KEY is not configured')
+    }
+    if (!DARK_SKY_LOCATION) {
+      throw new Error('DARK_SKY_LOCATION is not configured')
+    }
     this.reloadData()
     setInterval(this.reloadData, 15000)
   }
 
   @autobind
   private async reloadData() {
-    if (!DARK_SKY_API_KEY) {
-      throw new Error('DARK_SKY_API_KEY is not configured')
+    const url = `https://api.darksky.net/forecast/${DARK_SKY_API_KEY}/${DARK_SKY_LOCATION}?exclude=minutely,daily,alerts,flags`
+    const data = (await fetch(url).then((r) => r.json())) as DarkSkyResponse
+    if (!data.currently || !data.hourly) {
+      console.log(
+        `Unexpected API response from ${url}:`,
+        JSON.stringify(data, null, 2)
+      )
+      return
     }
-    const data = (await fetch(
-      `https://api.darksky.net/forecast/${DARK_SKY_API_KEY}/${DARK_SKY_LOCATION}?exclude=minutely,daily,alerts,flags`
-    ).then((r) => r.json())) as DarkSkyResponse
     this.current = {
       uvIndex: data.currently.uvIndex,
       brightness: Weather.calculateBrightness(data)

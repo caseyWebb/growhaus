@@ -88,9 +88,6 @@ steps:
     when:
       branch:
         - master
-    environment:
-      DARK_SKY_API_KEY:
-        from_secret: dark_sky_api_key
     settings:
       repo: containers.caseywebb.xyz/growhaus/server
       target: server
