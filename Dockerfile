@@ -29,6 +29,7 @@ FROM node:lts-alpine as server
 WORKDIR /repo
 COPY --from=builder /repo/server/dist ./
 COPY --from=builder /repo/server/node_modules ./node_modules
+CMD node /repo/server/dist/index.js
 
 FROM nginx:alpine as web
 COPY --from=builder /repo/web/dist /usr/share/nginx/html
