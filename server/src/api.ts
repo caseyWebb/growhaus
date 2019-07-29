@@ -11,7 +11,12 @@ export const websocketRoutes = [
     })
 
     // const sendBrightness = () => ctx.websocket.send(weather.current.brightness)
-    const sendBrightness = () => ctx.websocket.send(11)
+    const sendBrightness = () =>
+      ctx.websocket.send({
+        event: 'brightness',
+        brightness: 10,
+        duration: 5
+      })
     sendBrightness()
     // weather.subscribe(sendBrightness)
   }),
