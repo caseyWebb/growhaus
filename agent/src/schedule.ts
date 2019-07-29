@@ -37,9 +37,11 @@ export class LightSchedule {
   }
 
   public pause(duration: number) {
+    console.log('Pausing offline schedule')
     if (this.pauseTimeout) clearTimeout(this.pauseTimeout)
     this.paused = true
     this.pauseTimeout = setTimeout(() => {
+      console.log('Resuming offline schedule')
       this.paused = false
       this.next()
     }, duration)

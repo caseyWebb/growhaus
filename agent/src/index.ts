@@ -6,6 +6,8 @@ import { Socket, IncomingEvent } from './socket'
 main()
 
 async function main() {
+  console.log(`Starting agent with id "${AGENT_NAME}"`)
+
   const driver = new LedDriver(DRIVER_PWM_PIN)
   const socket = new Socket(`${SERVER_URL}/agent/${AGENT_NAME}`)
   const offlineFallbackSchedule = new LightSchedule()
@@ -20,4 +22,6 @@ async function main() {
   })
 
   offlineFallbackSchedule.subscribe(driver.setBrightness)
+
+  console.log('Agent started')
 }
