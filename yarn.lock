@@ -7391,6 +7391,11 @@ nodemon@^1.19.1:
     undefsafe "^2.0.2"
     update-notifier "^2.5.0"
 
+nonenumerable@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/nonenumerable/-/nonenumerable-1.1.1.tgz#35f74d66a2571a09f25bc143c87324ec7dd0e4ff"
+  integrity sha512-ptUD9w9D8WqW6fuJJkZNCImkf+0vdbgUTbRK3i7jsy3olqtH96hYE6Q/S3Tx9NWbcB/ocAjYshXCAUP0lZ9B4Q==
+
 noop-logger@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/noop-logger/-/noop-logger-0.1.1.tgz#94a2b1633c4f1317553007d8966fd0e841b6a4c2"

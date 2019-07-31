@@ -1,6 +1,8 @@
 import autobind from 'autobind-decorator'
+import { nonenumerable } from 'nonenumerable'
 
 export abstract class Subscribable {
+  @nonenumerable
   private subscriptions: ((data: this) => void)[] = []
 
   constructor() {
