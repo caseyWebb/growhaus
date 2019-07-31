@@ -20,11 +20,13 @@ class Agent extends Subscribable implements AgentData {
 
   public setBrightness(brightness: number, duration = 5) {
     console.log(`Setting brightness on "${this.name}" to ${brightness}`)
-    this.socket.send({
-      event: 'brightness',
-      brightness,
-      duration
-    })
+    this.socket.send(
+      JSON.stringify({
+        event: 'brightness',
+        brightness,
+        duration
+      })
+    )
     this.next()
   }
 }
