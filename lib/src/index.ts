@@ -1,23 +1,22 @@
-export interface DarkSkyResponse {
-  code: number // HTTP response code
-  currently: {
-    uvIndex: number
-  }
-  hourly: {
-    data: {
-      time: number
-      uvIndex: number
-    }[]
-  }
-}
-
 export enum WebApiEvents {
+  AgentData = 'agents',
   WeatherData = 'weather'
 }
 
 export interface WebApiMessage {
   event: WebApiEvents
   data: any
+}
+
+export interface AgentDataMessage extends WebApiMessage {
+  event: WebApiEvents.AgentData
+  data: {
+    agents: { [k: string]: AgentData }
+  }
+}
+
+export interface AgentData {
+  brightness: number
 }
 
 export interface WeatherDataMessage extends WebApiMessage {

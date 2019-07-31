@@ -1,12 +1,27 @@
 import autobind from 'autobind-decorator'
 import fetch from 'node-fetch'
 
-import { DarkSkyResponse, WeatherData } from '@caseywebb/growhaus'
+import { WeatherData } from '@caseywebb/growhaus'
 
 import { DARK_SKY_API_KEY, DARK_SKY_LOCATION } from './config'
 import { Subscribable } from './subscribable'
 
+interface DarkSkyResponse {
+  code: number // HTTP response code
+  currently: {
+    uvIndex: number
+  }
+  hourly: {
+    data: {
+      time: number
+      uvIndex: number
+    }[]
+  }
+}
+
 class Weather extends Subscribable implements WeatherData {
+  public readonly reloadIntervalDurationMinutes = 15
+
   public rateLimited: boolean = false
 
   public current = {
@@ -27,7 +42,10 @@ class Weather extends Subscribable implements WeatherData {
       throw new Error('DARK_SKY_LOCATION is not configured')
     }
     this.reloadData()
-    setInterval(this.reloadData, 15 /* min */ * 60 /* sec */ * 1000 /* ms */)
+    setInterval(
+      this.reloadData,
+      this.reloadIntervalDurationMinutes * 60 /* sec */ * 1000 /* ms */
+    )
   }
 
   @autobind
