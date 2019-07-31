@@ -38,7 +38,7 @@ steps:
       - mv ./.git /repo/lib
       - cd /repo/lib
       - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
-      - npx fluid-publish changesCmd=true devTag=$DRONE_COMMIT
+      - npx fluid-publish changesCmd=true devTag=${DRONE_COMMIT}
 
 ---
 kind: pipeline
@@ -61,7 +61,7 @@ steps:
       - mv ./.git /repo/agent
       - cd /repo/agent
       - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
-      - yarn add @caseywebb/growhaus@$DRONE_COMMIT
+      - yarn add @caseywebb/growhaus@${DRONE_COMMIT}
       - npx fluid-publish changesCmd=true devTag=latest
   - name: deploy:agent
     image: appleboy/drone-ssh

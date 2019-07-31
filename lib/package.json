@@ -5,6 +5,9 @@
   "main": "dist/node/index.js",
   "module": "dist/browser/index.js",
   "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "yarn build:node; yarn build:browser",
     "build:node": "tsc --declaration --declarationMap --declarationDir dist/types --module commonjs --outDir dist/node",
