@@ -1,4 +1,5 @@
 export interface DarkSkyResponse {
+  code: number // HTTP response code
   currently: {
     uvIndex: number
   }

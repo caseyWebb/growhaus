@@ -7,6 +7,8 @@ import { DARK_SKY_API_KEY, DARK_SKY_LOCATION } from './config'
 import { Subscribable } from './subscribable'
 
 class Weather extends Subscribable implements WeatherData {
+  public rateLimited: boolean = false
+
   public current = {
     brightness: 100,
     uvIndex: 10
@@ -25,13 +27,20 @@ class Weather extends Subscribable implements WeatherData {
       throw new Error('DARK_SKY_LOCATION is not configured')
     }
     this.reloadData()
-    setInterval(this.reloadData, 15000)
+    setInterval(this.reloadData, 15 /* min */ * 60 /* sec */ * 1000 /* ms */)
   }
 
   @autobind
   private async reloadData() {
+    if (this.rateLimited) return this.next()
     const url = `https://api.darksky.net/forecast/${DARK_SKY_API_KEY}/${DARK_SKY_LOCATION}?exclude=minutely,daily,alerts,flags`
     const data = (await fetch(url).then((r) => r.json())) as DarkSkyResponse
+    if (data.code === 403) {
+      console.log('Dark Sky API Limit Exceeded')
+      this.preventAPISpamming()
+      this.next()
+      return
+    }
     if (!data.currently || !data.hourly) {
       console.log(
         `Unexpected API response from ${url}:`,
@@ -48,6 +57,19 @@ class Weather extends Subscribable implements WeatherData {
       uvIndex: d.uvIndex
     }))
     this.next()
+  }
+
+  private preventAPISpamming() {
+    this.rateLimited = true
+    const midnight = new Date()
+    midnight.setHours(24)
+    midnight.setMinutes(0)
+    midnight.setSeconds(0)
+    midnight.setMilliseconds(0)
+    const msUntilMidnight = midnight.getTime() - Date.now()
+    setTimeout(() => {
+      this.rateLimited = false
+    }, msUntilMidnight)
   }
 
   private static calculateBrightness(data: DarkSkyResponse) {
