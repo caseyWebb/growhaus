@@ -1,3 +1,5 @@
+export * from './subscribable'
+
 export enum WebApiEvents {
   AgentData = 'agents',
   WeatherData = 'weather'

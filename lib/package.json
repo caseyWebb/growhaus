@@ -16,6 +16,8 @@
     "typescript": "^3.5.3"
   },
   "dependencies": {
+    "autobind-decorator": "^2.4.0",
+    "nonenumerable": "^1.1.1",
     "tslib": "^1.10.0"
   }
 }

@@ -1,10 +1,9 @@
 import autobind from 'autobind-decorator'
 import fetch from 'node-fetch'
 
-import { WeatherData } from '@caseywebb/growhaus'
+import { Subscribable, WeatherData } from '@caseywebb/growhaus'
 
 import { DARK_SKY_API_KEY, DARK_SKY_LOCATION } from './config'
-import { Subscribable } from './subscribable'
 
 interface DarkSkyResponse {
   code: number // HTTP response code

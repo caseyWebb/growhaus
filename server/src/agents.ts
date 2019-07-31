@@ -1,8 +1,7 @@
 import * as WebSocket from 'ws'
 
-import { AgentData } from '@caseywebb/growhaus'
+import { AgentData, Subscribable } from '@caseywebb/growhaus'
 
-import { Subscribable } from './subscribable'
 import { weather } from './weather'
 
 class Agent extends Subscribable implements AgentData {
