@@ -28,9 +28,9 @@ RUN yarn install --production --pure-lockfile --ignore-optional
 
 FROM node:lts-alpine as server
 COPY --from=builder /repo/server/dist /server
-COPY --from=builder /repo/server/node_modules ./server/node_modules
-COPY --from=builder /repo/lib/package.json /lib/package.json
-COPY --from=builder /repo/lib/dist /lib/dist
+COPY --from=builder /repo/server/node_modules /server/node_modules
+RUN rm /server/node_modules/@caseywebb/growhaus
+COPY --from=builder /repo/lib/dist/node /server/node_modules/@caseywebb/growhaus
 CMD node /server/index.js
 
 FROM nginx:alpine as web
