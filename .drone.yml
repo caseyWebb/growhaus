@@ -73,7 +73,7 @@ steps:
       port: 22
       script:
         - update_growhaus_agent
-      command_timeout: 180
+      command_timeout: 3m
     depends_on:
       - publish:agent
 ---
