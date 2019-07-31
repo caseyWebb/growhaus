@@ -8,7 +8,6 @@ import { heartbeat } from './heartbeat'
 const app = enableWebSockets(new Koa())
 
 app.ws.use(async (ctx, next) => {
-  console.log(ctx.url)
   heartbeat(ctx.websocket)
   await next()
 })
