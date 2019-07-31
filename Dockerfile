@@ -7,7 +7,7 @@ COPY agent/package.json agent/package.json
 COPY lib/package.json lib/package.json
 COPY server/package.json server/package.json
 COPY web/package.json web/package.json
-RUN yarn install --pure-lockfile
+RUN yarn install --pure-lockfile --ignore-optional
 COPY agent/@types ./agent/@types
 COPY agent/bin ./agent/bin
 COPY agent/src ./agent/src
@@ -24,7 +24,7 @@ ENV SERVER_URL wss://apps.caseywebb.xyz/growhaus/api
 ENV WEB_UI_URL https://apps.caseywebb.xyz/growhaus
 RUN yarn build
 RUN support/nohoist.js
-RUN yarn install --production --pure-lockfile
+RUN yarn install --production --pure-lockfile --ignore-optional
 
 FROM node:lts-alpine as server
 COPY --from=builder /repo/server/dist /server
