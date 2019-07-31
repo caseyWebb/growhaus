@@ -1,6 +1,12 @@
 import autobind from 'autobind-decorator'
+import * as ko from 'knockout'
 
-import { WebApiEvents, WebApiMessage, WeatherData } from '@caseywebb/growhaus'
+import {
+  AgentData,
+  WeatherData,
+  WebApiEvents,
+  WebApiMessage
+} from '@caseywebb/growhaus'
 
 type Handler<T> = (data: T) => void
 
@@ -8,6 +14,7 @@ class Socket {
   private heartbeatTimeout?: NodeJS.Timer
   private ws!: WebSocket
   private onMessageHandlers = {
+    [WebApiEvents.AgentData]: [] as Handler<AgentData>[],
     [WebApiEvents.WeatherData]: [] as Handler<WeatherData>[]
   }
   private connectionPromise: Promise<void> = Promise.resolve()
@@ -22,9 +29,14 @@ class Socket {
   }
 
   public on(
+    eventType: WebApiEvents.AgentData,
+    handler: Handler<AgentData>
+  ): void
+  public on(
     eventType: WebApiEvents.WeatherData,
-    handler: (data: WeatherData) => void
-  ) {
+    handler: Handler<WeatherData>
+  ): void
+  public on(eventType: WebApiEvents, handler: Handler<any>) {
     this.onMessageHandlers[eventType].push(handler)
   }
 
@@ -60,4 +72,20 @@ class Socket {
   }
 }
 
-export const socket = new Socket()
+const socket = new Socket()
+
+export abstract class AbstractSocketModel<D> {
+  public data = ko.observable<D>()
+
+  public ready = ko.observable(false)
+
+  public lastUpdated = ko.observable<number>()
+
+  constructor(event: WebApiEvents) {
+    socket.on(event as any, (data: any) => {
+      this.data(data)
+      this.ready(true)
+      this.lastUpdated(Date.now())
+    })
+  }
+}

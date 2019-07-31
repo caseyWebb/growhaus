@@ -2,4 +2,9 @@
 <pre>
   {{ JSON.stringify(weather.data(), null, 2) }}
 </pre>
-{{/if}} {{#ifnot weather.ready}} Loading weather data... {{/ifnot}}
+{{/if}} {{#ifnot weather.ready}} Loading weather data... {{/ifnot}} {{#if
+agents.ready}}
+<pre>
+  {{ JSON.stringify(agents.data(), null, 2) }}
+</pre>
+{{/if}} {{#ifnot agents.ready}} Loading agent data... {{/ifnot}}

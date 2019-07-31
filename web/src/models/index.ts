@@ -1,2 +1,2 @@
-export * from './socket'
+export * from './agents'
 export * from './weather'
