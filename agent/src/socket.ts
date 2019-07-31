@@ -1,6 +1,8 @@
 import autobind from 'autobind-decorator'
 import WebSocket from 'ws'
 
+import { AgentState } from './state'
+
 export enum IncomingEvent {
   Brightness = 'brightness'
 }
@@ -21,6 +23,8 @@ export class Socket {
     [IncomingEvent.Brightness]: [] as ((m: ManualBrightnessMessage) => void)[]
   }
 
+  public connected = false
+
   constructor(private readonly url: string) {
     this.connect()
   }
@@ -31,6 +35,10 @@ export class Socket {
   ): void
   public on(eventType: IncomingEvent, handler: (m?: any) => void) {
     this.onMessageHandlers[eventType].push(handler)
+  }
+
+  public send(state: AgentState) {
+    this.ws.send(state)
   }
 
   public dispose() {
@@ -68,6 +76,7 @@ export class Socket {
   @autobind
   private wsOpen() {
     console.log(`Connected to ${this.url}`)
+    this.connected = true
     this.wsHeartbeat()
   }
 
@@ -77,6 +86,7 @@ export class Socket {
       'Connection to server failed... Attempting reconnection in 1 minute...'
     )
     if (this.heartbeatTimeout) clearTimeout(this.heartbeatTimeout)
+    this.connected = false
     setTimeout(this.connect, 60000)
   }
 
