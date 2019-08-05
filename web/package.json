@@ -1,6 +1,6 @@
 {
   "name": "@caseywebb/growhaus-web",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Casey Webb (https://caseyWebb.xyz)",
   "scripts": {
     "build": "webpack -p",
@@ -8,7 +8,7 @@
     "start": "npx http-server ./"
   },
   "devDependencies": {
-    "@caseywebb/growhaus": "0.0.0",
+    "@caseywebb/growhaus": "^0.0.1",
     "@profiscience/knockout-contrib": "^2.0.13",
     "@types/jquery": "^3.3.30",
     "@types/lodash": "^4.14.136",

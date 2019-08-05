@@ -1,6 +1,6 @@
 {
   "name": "@caseywebb/growhaus-agent",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Casey Webb (https://caseyWebb.xyz)",
   "bin": {
     "growhaus-agent": "./bin/growhaus-agent"
@@ -17,7 +17,7 @@
     "pi-io": "^1.0.0"
   },
   "dependencies": {
-    "@caseywebb/growhaus": "0.0.0",
+    "@caseywebb/growhaus": "^0.0.1",
     "autobind-decorator": "^2.4.0",
     "dotenv": "^8.0.0",
     "johnny-five": "^1.2.0",
