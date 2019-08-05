@@ -28,6 +28,8 @@ steps:
 ---
 kind: pipeline
 name: agent
+clone:
+  disable: true
 depends_on:
   - build
 steps:
@@ -46,6 +48,8 @@ steps:
 ---
 kind: pipeline
 name: server
+clone:
+  disable: true
 depends_on:
   - build
 steps:
@@ -77,6 +81,8 @@ steps:
 ---
 kind: pipeline
 name: web
+clone:
+  disable: true
 depends_on:
   - build
 steps:
