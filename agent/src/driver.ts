@@ -41,9 +41,10 @@ export class LedDriver {
   private static async getBoardIO(board: BoardType) {
     switch (board) {
       case BoardType.RaspberryPi:
-        return await import('pi-io')
+        const { default: piIO } = await import('pi-io')
+        return piIO
       default:
-        throw new Error(`Unknown BOARD: ${board}`)
+        throw new Error(`Unknown board type "${board}"`)
     }
   }
 }
