@@ -1,6 +1,6 @@
 {
   "name": "@caseywebb/growhaus-server",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.6+fcd875a",
   "author": "Casey Webb (https://caseyWebb.xyz)",
   "license": "WTFPL",
   "bin": {
@@ -31,5 +31,6 @@
     "concurrently": "^4.1.1",
     "nodemon": "^1.19.1",
     "typescript": "^3.5.3"
-  }
+  },
+  "gitHead": "fcd875a719123bf33e311eae0ee82ae346dc2bb5"
 }
