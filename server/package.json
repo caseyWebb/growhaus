@@ -1,7 +1,6 @@
 {
   "name": "@caseywebb/growhaus-server",
   "version": "0.0.0",
-  "private": true,
   "author": "Casey Webb (https://caseyWebb.xyz)",
   "scripts": {
     "build": "tsc -b",

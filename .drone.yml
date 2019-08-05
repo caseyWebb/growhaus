@@ -8,62 +8,30 @@ steps:
     when:
       branch:
         - master
+    environment:
+      NPM_TOKEN:
+        from_secret: npm_token
     settings:
       repo: containers.caseywebb.xyz/growhaus/builder
-      target: builder
       cache_from: containers.caseywebb.xyz/growhaus/builder
       registry: containers.caseywebb.xyz
       username:
         from_secret: docker_user
       password:
         from_secret: docker_pass
-
----
-kind: pipeline
-name: lib
-depends_on:
-  - build
-image_pull_secrets:
-  - docker_pull_secrets
-steps:
-  - name: publish:lib
-    image: containers.caseywebb.xyz/growhaus/builder
-    when:
-      branch:
-        - master
-    environment:
-      NPM_TOKEN:
-        from_secret: npm_token
     commands:
-      - mv ./.git /repo/lib
-      - cd /repo/lib
+      - mv .git /repo
+      - cd /repo
       - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
-      - npx fluid-publish changesCmd=true devTag=${DRONE_COMMIT}
+      - npx lerna publish --canary --dist-tag canary
 
 ---
 kind: pipeline
 name: agent
 depends_on:
   - build
-  - lib
-image_pull_secrets:
-  - docker_pull_secrets
 steps:
-  - name: publish:agent
-    image: containers.caseywebb.xyz/growhaus/builder
-    when:
-      branch:
-        - master
-    environment:
-      NPM_TOKEN:
-        from_secret: npm_token
-    commands:
-      - mv ./.git /repo/agent
-      - cd /repo/agent
-      - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
-      - yarn add @caseywebb/growhaus@${DRONE_COMMIT}
-      - npx fluid-publish changesCmd=true devTag=latest
-  - name: deploy:agent
+  - name: deploy
     image: appleboy/drone-ssh
     settings:
       host: ssh.caseywebb.xyz
@@ -74,31 +42,28 @@ steps:
       script:
         - update_growhaus_agent
       command_timeout: 3m
-    depends_on:
-      - publish:agent
+
 ---
 kind: pipeline
 name: server
 depends_on:
   - build
-image_pull_secrets:
-  - docker_pull_secrets
 steps:
-  - name: publish:server
+  - name: image
     image: plugins/docker:18.09
     when:
       branch:
         - master
     settings:
+      dockerfile: server/Dockerfile
       repo: containers.caseywebb.xyz/growhaus/server
       target: server
-      cache_from: containers.caseywebb.xyz/growhaus/builder
       registry: containers.caseywebb.xyz
       username:
         from_secret: docker_user
       password:
         from_secret: docker_pass
-  - name: deploy:server
+  - name: deploy
     image: appleboy/drone-ssh
     settings:
       host: ssh.caseywebb.xyz
@@ -108,32 +73,28 @@ steps:
       port: 22
       script:
         - update_growhaus_server
-    depends_on:
-      - publish:server
 
 ---
 kind: pipeline
 name: web
 depends_on:
   - build
-image_pull_secrets:
-  - docker_pull_secrets
 steps:
-  - name: publish:web
+  - name: image
     image: plugins/docker:18.09
     when:
       branch:
         - master
     settings:
+      dockerfile: web/Dockerfile
       repo: containers.caseywebb.xyz/growhaus/web
       target: web
-      cache_from: containers.caseywebb.xyz/growhaus/builder
       registry: containers.caseywebb.xyz
       username:
         from_secret: docker_user
       password:
         from_secret: docker_pass
-  - name: deploy:web
+  - name: deploy
     image: appleboy/drone-ssh
     settings:
       host: ssh.caseywebb.xyz
@@ -143,5 +104,3 @@ steps:
       port: 22
       script:
         - update_growhaus_web
-    depends_on:
-      - publish:web
