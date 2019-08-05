@@ -27,7 +27,7 @@ steps:
       - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
       - yarn install --pure-lockfile --ignore-optional --production false
       - yarn build
-      - yarn lerna publish major --yes --canary --dist-tag canary
+      - yarn lerna publish major --yes --force-publish --canary --dist-tag canary
   - name: cache:rebuild
     image: drillster/drone-volume-cache
     volumes:
