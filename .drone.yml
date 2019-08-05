@@ -1,7 +1,5 @@
 kind: pipeline
 name: build
-clone:
-  depth: 50
 steps:
   - name: cache:restore
     image: drillster/drone-volume-cache
@@ -29,7 +27,7 @@ steps:
       - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
       - yarn install --pure-lockfile --ignore-optional --production false
       - yarn build
-      - yarn lerna publish major --canary --dist-tag canary
+      - yarn lerna publish major --yes --canary --dist-tag canary
   - name: cache:rebuild
     image: drillster/drone-volume-cache
     volumes:
@@ -66,8 +64,6 @@ steps:
 ---
 kind: pipeline
 name: server
-clone:
-  disable: true
 depends_on:
   - build
 steps:
@@ -100,8 +96,6 @@ steps:
 ---
 kind: pipeline
 name: web
-clone:
-  disable: true
 depends_on:
   - build
 steps:
