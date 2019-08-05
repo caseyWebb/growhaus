@@ -1,29 +1,39 @@
 kind: pipeline
 name: build
-image_pull_secrets:
-  - docker_pull_secrets
 steps:
+  - name: cache:restore
+    image: drillster/drone-volume-cache
+    volumes:
+      - /var/cache/growhaus:/cache
+    settings:
+      restore: true
+      mount:
+        - ./node_modules
   - name: build
-    image: plugins/docker:18.09
+    image: node:lts-alpine
     when:
       branch:
         - master
     environment:
+      NODE_ENV: production
       NPM_TOKEN:
         from_secret: npm_token
-    settings:
-      repo: containers.caseywebb.xyz/growhaus/builder
-      cache_from: containers.caseywebb.xyz/growhaus/builder
-      registry: containers.caseywebb.xyz
-      username:
-        from_secret: docker_user
-      password:
-        from_secret: docker_pass
+      SERVER_URL: wss://apps.caseywebb.xyz/growhaus/api
+      WEB_UI_URL: https://apps.caseywebb.xyz/growhaus
     commands:
-      - mv .git /repo
-      - cd /repo
+      - apk add git python2
       - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
-      - npx lerna publish major --yes --canary --dist-tag canary
+      - yarn install --pure-lockfile --ignore-optional
+      - yarn build
+      - yarn lerna publish major --yes --canary --dist-tag canary
+  - name: cache:rebuild
+    image: drillster/drone-volume-cache
+    volumes:
+      - /var/cache/growhaus:/cache
+    settings:
+      rebuild: true
+      mount:
+        - ./node_modules
 
 ---
 kind: pipeline
@@ -67,6 +77,7 @@ steps:
         from_secret: docker_user
       password:
         from_secret: docker_pass
+      purge: true
   - name: deploy
     image: appleboy/drone-ssh
     settings:
@@ -100,6 +111,7 @@ steps:
         from_secret: docker_user
       password:
         from_secret: docker_pass
+      purge: true
   - name: deploy
     image: appleboy/drone-ssh
     settings:
