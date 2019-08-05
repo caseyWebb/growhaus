@@ -25,6 +25,8 @@ steps:
       - apk add git python2
       - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
       - yarn install --pure-lockfile --ignore-optional
+      - ls
+      - pwd
       - yarn build
       - yarn lerna publish major --yes --canary --dist-tag canary
   - name: cache:rebuild
