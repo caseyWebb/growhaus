@@ -1,5 +1,7 @@
 kind: pipeline
 name: build
+clone:
+  depth: 50
 steps:
   - name: cache:restore
     image: drillster/drone-volume-cache
