@@ -23,7 +23,7 @@ steps:
       - mv .git /repo
       - cd /repo
       - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
-      - npx lerna publish --canary --dist-tag canary
+      - npx lerna publish major --yes --canary --dist-tag canary
 
 ---
 kind: pipeline
