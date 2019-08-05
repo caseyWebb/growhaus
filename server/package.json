@@ -1,6 +1,6 @@
 {
   "name": "@caseywebb/growhaus-server",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Casey Webb (https://caseyWebb.xyz)",
   "license": "WTFPL",
   "scripts": {

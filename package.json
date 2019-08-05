@@ -1,7 +1,6 @@
 {
+  "version": "1.0.0",
   "private": true,
-  "name": "@caseywebb/growhaus",
-  "version": "0.0.0",
   "license": "WTFPL",
   "workspaces": {
     "packages": [
