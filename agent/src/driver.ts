@@ -42,6 +42,8 @@ export class LedDriver {
     switch (board) {
       case BoardType.RaspberryPi:
         return await import('pi-io')
+      default:
+        throw new Error(`Unknown BOARD: ${board}`)
     }
   }
 }
