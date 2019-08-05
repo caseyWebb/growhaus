@@ -4,7 +4,8 @@ steps:
   - name: cache:restore
     image: drillster/drone-volume-cache
     volumes:
-      - /var/cache/growhaus:/cache
+      - name: cache
+        path: /cache
     settings:
       restore: true
       mount:
@@ -29,12 +30,16 @@ steps:
   - name: cache:rebuild
     image: drillster/drone-volume-cache
     volumes:
-      - /var/cache/growhaus:/cache
+      - name: cache
+        path: /cache
     settings:
       rebuild: true
       mount:
         - ./node_modules
-
+volumes:
+  - name: cache
+    host:
+      path: /var/cache/growhaus
 ---
 kind: pipeline
 name: agent
