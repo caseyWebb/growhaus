@@ -2,6 +2,7 @@
   "name": "@caseywebb/growhaus-agent",
   "version": "0.0.1",
   "author": "Casey Webb (https://caseyWebb.xyz)",
+  "license": "WTFPL",
   "bin": {
     "growhaus-agent": "./bin/growhaus-agent"
   },

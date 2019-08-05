@@ -2,6 +2,7 @@
   "name": "@caseywebb/growhaus",
   "version": "0.0.1",
   "author": "Casey Webb (https://caseyWebb.xyz)",
+  "license": "WTFPL",
   "main": "dist/node/index.js",
   "module": "dist/browser/index.js",
   "types": "dist/types/index.d.ts",
