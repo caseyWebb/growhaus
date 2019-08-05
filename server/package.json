@@ -3,9 +3,11 @@
   "version": "1.0.0-alpha.6+fcd875a",
   "author": "Casey Webb (https://caseyWebb.xyz)",
   "license": "WTFPL",
-  "bin": {
-    "growhaus-server": "./dist/index.js"
-  },
+  "bin": "./bin/growhaus-server",
+  "files": [
+    "bin",
+    "dist"
+  ],
   "scripts": {
     "build": "tsc -b",
     "start": "node ./dist/index.js",
