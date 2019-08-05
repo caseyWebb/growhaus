@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "author": "Casey Webb (https://caseyWebb.xyz)",
   "license": "WTFPL",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "webpack -p",
     "develop": "webpack-dev-server --hot",
