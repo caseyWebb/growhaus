@@ -14,7 +14,7 @@
     "develop": "concurrently --kill-others \"yarn build -w --preserveWatchOutput\" \"nodemon --watch ./dist ./dist/index.js\""
   },
   "dependencies": {
-    "@caseywebb/growhaus": "^0.0.1",
+    "@caseywebb/growhaus": "1.0.0",
     "autobind-decorator": "^2.4.0",
     "dotenv": "^8.0.0",
     "koa": "^2.7.0",

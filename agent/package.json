@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "author": "Casey Webb (https://caseyWebb.xyz)",
   "license": "WTFPL",
-  "bin": {
-    "growhaus-agent": "./bin/growhaus-agent"
-  },
+  "bin": "./bin/growhaus-agent",
   "files": [
     "bin",
     "dist"
@@ -18,7 +16,7 @@
     "pi-io": "^1.0.0"
   },
   "dependencies": {
-    "@caseywebb/growhaus": "^0.0.1",
+    "@caseywebb/growhaus": "1.0.0",
     "autobind-decorator": "^2.4.0",
     "dotenv": "^8.0.0",
     "johnny-five": "^1.2.0",
