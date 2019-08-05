@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "author": "Casey Webb (https://caseyWebb.xyz)",
   "license": "WTFPL",
+  "bin": {
+    "growhaus-server": "./dist/index.js"
+  },
   "scripts": {
     "build": "tsc -b",
     "start": "node ./dist/index.js",
