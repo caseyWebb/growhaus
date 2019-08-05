@@ -1,5 +1,6 @@
 import autobind from 'autobind-decorator'
 import { Board, Led } from 'johnny-five'
+import { LedOption } from 'pi-io'
 
 export enum BoardType {
   RaspberryPi = 'pi'
@@ -7,7 +8,7 @@ export enum BoardType {
 
 type LedDriverConfig = {
   board: BoardType
-  pin: number
+  pin: LedOption
 }
 
 export class LedDriver {
@@ -21,7 +22,7 @@ export class LedDriver {
       const io = await LedDriver.getBoardIO(config.board)
       const board = new Board({ io })
       board.on('ready', () => {
-        this.led = new Led(config.pin)
+        this.led = new Led(config.pin as any)
         console.log('GPIO initialized.')
         resolve()
       })

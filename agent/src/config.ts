@@ -1,12 +1,13 @@
 import { resolve } from 'path'
 import dotenv from 'dotenv'
+import { LedOption } from 'pi-io'
 import { BoardType } from './driver'
 
 dotenv.config({ path: resolve(__dirname, '../../.env') })
 
-export const DRIVER_PWM_PIN = process.env.DRIVER_PWM_PIN
-  ? parseInt(process.env.DRIVER_PWM_PIN)
-  : 18
+export const DRIVER_PWM_PIN: LedOption = process.env.DRIVER_PWM_PIN
+  ? (process.env.DRIVER_PWM_PIN as LedOption)
+  : 'GPIO18'
 
 export const SERVER_URL = process.env.SERVER_URL || 'ws://localhost:3001'
 
