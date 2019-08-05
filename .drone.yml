@@ -25,6 +25,7 @@ steps:
       WEB_UI_URL: https://apps.caseywebb.xyz/growhaus
     commands:
       - apk add git python2
+      - git fetch --tags
       - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
       - yarn install --pure-lockfile --ignore-optional --production false
       - yarn build
