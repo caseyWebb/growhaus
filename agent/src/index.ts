@@ -31,7 +31,7 @@ socket.on(Connected, () => socket.sendState)
 
 socket.on(IncomingEvent.Brightness, (m) => {
   // pause until 10 minutes after we should have received a new message
-  offlineFallbackLightSchedule.pause(m.duration + 10)
+  offlineFallbackLightSchedule.pause((m.duration + 10) * 60 * 1000)
   state.setBrightness(m.brightness)
 })
 

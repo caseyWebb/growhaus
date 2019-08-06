@@ -3,44 +3,11 @@ import autobind from 'autobind-decorator'
 import { Subscribable } from '@caseywebb/growhaus'
 
 class LightSchedule extends Subscribable {
-  public brightness: number
+  public brightness = this.getCurrentBrightness()
 
   private paused = false
   private pauseTimeout?: NodeJS.Timer
-  private readonly updateInterval: NodeJS.Timer
-  private readonly schedule = [
-    10, // midnight
-    10,
-    10,
-    10,
-    10,
-    10,
-    30, // 6 AM
-    40,
-    50,
-    60,
-    70,
-    80,
-    90,
-    100, // 1 PM
-    100,
-    100,
-    100,
-    100,
-    90, // 6 PM
-    80,
-    50,
-    30,
-    10,
-    10,
-    10
-  ]
-
-  constructor() {
-    super()
-    this.brightness = this.getCurrentBrightness()
-    this.updateInterval = setInterval(this.next, 60 * 1000 * 60)
-  }
+  private readonly updateInterval = setInterval(this.next, 60 * 1000 * 60)
 
   public pause(duration: number) {
     console.log('Pausing offline schedule')
@@ -61,7 +28,35 @@ class LightSchedule extends Subscribable {
   }
 
   private getCurrentBrightness() {
-    return this.schedule[new Date().getHours()]
+    const nowH = new Date().getHours()
+    const schedule = [
+      10, // midnight
+      10,
+      10,
+      10,
+      10,
+      10,
+      30, // 6 AM
+      40,
+      50,
+      60,
+      70,
+      80,
+      90,
+      100, // 1 PM
+      100,
+      100,
+      100,
+      100,
+      90, // 6 PM
+      80,
+      50,
+      30,
+      10,
+      10,
+      10
+    ]
+    return schedule[nowH]
   }
 
   @autobind
