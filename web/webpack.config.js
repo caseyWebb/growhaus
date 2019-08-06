@@ -24,12 +24,16 @@ const AVAILABLE_CPUS = Math.max(os.cpus().length - 2, 2) // leave 2 CPUS free
 
 console.log(
   '\nBuild config:\n\n',
-  JSON.stringify({
-    NODE_ENV,
-    SERVER_URL,
-    WEB_UI_URL,
-    PRODUCTION
-  })
+  JSON.stringify(
+    {
+      NODE_ENV,
+      SERVER_URL,
+      WEB_UI_URL,
+      PRODUCTION
+    },
+    null,
+    2
+  )
 )
 
 module.exports = {
