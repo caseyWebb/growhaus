@@ -1,3 +1,4 @@
+import autobind from 'autobind-decorator'
 import * as WebSocket from 'ws'
 
 import { AgentData, Subscribable } from '@caseywebb/growhaus'
@@ -10,15 +11,12 @@ class Agent extends Subscribable implements AgentData {
   constructor(public name: string, private socket: WebSocket) {
     super()
     this.socket.on('message', (data) => Object.assign(this, data))
-    weather.subscribe(() =>
-      this.setBrightness(
-        weather.current.brightness,
-        weather.reloadIntervalDurationMinutes + 5
-      )
-    )
+
+    this.setBrightnessViaWeather()
+    weather.subscribe(this.setBrightnessViaWeather)
   }
 
-  public setBrightness(brightness: number, duration = 5) {
+  private setBrightness(brightness: number, duration = 5) {
     console.log(`Setting brightness on "${this.name}" to ${brightness}`)
     this.socket.send(
       JSON.stringify({
@@ -28,6 +26,14 @@ class Agent extends Subscribable implements AgentData {
       })
     )
     this.next()
+  }
+
+  @autobind
+  private setBrightnessViaWeather() {
+    this.setBrightness(
+      weather.current.brightness,
+      weather.reloadIntervalDurationMinutes
+    )
   }
 }
 
