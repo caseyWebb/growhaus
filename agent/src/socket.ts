@@ -111,4 +111,4 @@ class Socket {
   }
 }
 
-export const socket = new Socket(`${SERVER_URL}/agent/${AGENT_NAME}}`)
+export const socket = new Socket(`${SERVER_URL}/agent/${AGENT_NAME}`)

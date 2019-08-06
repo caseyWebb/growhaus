@@ -1,4 +1,5 @@
 import autobind from 'autobind-decorator'
+import { nonenumerable } from 'nonenumerable'
 import * as WebSocket from 'ws'
 
 import { AgentData, Subscribable } from '@caseywebb/growhaus'
@@ -10,6 +11,8 @@ class Agent extends Subscribable implements AgentData {
 
   constructor(public name: string, private socket: WebSocket) {
     super()
+    nonenumerable(this, 'socket')
+
     this.socket.on('message', (data: string) =>
       Object.assign(this, JSON.parse(data))
     )
