@@ -56,35 +56,37 @@ volumes:
       path: /var/cache
 ---
 kind: pipeline
-name: agent
+name: deploy:agent
 clone:
   disable: true
+trigger:
+  branch:
+    - master
 depends_on:
   - build
 steps:
-  - name: deploy
+  - name: update
     image: appleboy/drone-ssh
     settings:
       host: ssh.caseywebb.xyz
       username: growhaus
       key:
         from_secret: ssh_key
-      port: 22
       script:
         - update_growhaus_agent
       command_timeout: 3m
 
 ---
 kind: pipeline
-name: server
+name: deploy:server
+trigger:
+  branch:
+    - master
 depends_on:
   - build
 steps:
   - name: image
     image: plugins/docker:18.09
-    when:
-      branch:
-        - master
     settings:
       dockerfile: server/Dockerfile
       repo: containers.caseywebb.xyz/growhaus/server
@@ -95,28 +97,27 @@ steps:
       password:
         from_secret: docker_pass
       purge: true
-  - name: deploy
+  - name: update
     image: appleboy/drone-ssh
     settings:
       host: ssh.caseywebb.xyz
       username: growhaus
       key:
         from_secret: ssh_key
-      port: 22
       script:
         - update_growhaus_server
 
 ---
 kind: pipeline
-name: web
+name: deploy:web
+trigger:
+  branch:
+    - master
 depends_on:
   - build
 steps:
   - name: image
     image: plugins/docker:18.09
-    when:
-      branch:
-        - master
     settings:
       dockerfile: web/Dockerfile
       repo: containers.caseywebb.xyz/growhaus/web
@@ -134,6 +135,5 @@ steps:
       username: growhaus
       key:
         from_secret: ssh_key
-      port: 22
       script:
         - update_growhaus_web
