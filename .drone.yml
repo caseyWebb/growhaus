@@ -1,20 +1,17 @@
 kind: pipeline
 name: build
 steps:
-  - name: cache:restore
-    image: drillster/drone-volume-cache
-    volumes:
-      - name: cache
-        path: /cache
-    settings:
-      restore: true
-      mount:
-        - ./node_modules
+  # - name: cache:restore
+  #   image: drillster/drone-volume-cache
+  #   volumes:
+  #     - name: cache
+  #       path: /cache
+  #   settings:
+  #     restore: true
+  #     mount:
+  #       - ./node_modules
   - name: build
-    image: node:lts-alpine
-    when:
-      branch:
-        - master
+    image: node:lts
     environment:
       NODE_ENV: production
       NPM_TOKEN:
@@ -22,25 +19,32 @@ steps:
       SERVER_URL: wss://apps.caseywebb.xyz/growhaus/api
       WEB_UI_URL: https://apps.caseywebb.xyz/growhaus
     commands:
-      - apk add git python2
-      - git fetch --tags
-      - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
       - yarn install --pure-lockfile --ignore-optional --production false
       - yarn build
+  - name: publish
+    when:
+      branch:
+        - master
+    environment:
+      NPM_TOKEN:
+        from_secret: npm_token
+    commands:
+      - git fetch --tags
+      - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
       - yarn lerna publish major --yes --force-publish --canary --dist-tag canary
-  - name: cache:rebuild
-    image: drillster/drone-volume-cache
-    volumes:
-      - name: cache
-        path: /cache
-    settings:
-      rebuild: true
-      mount:
-        - ./node_modules
-volumes:
-  - name: cache
-    host:
-      path: /var/cache/growhaus
+#   - name: cache:rebuild
+#     image: drillster/drone-volume-cache
+#     volumes:
+#       - name: cache
+#         path: /cache
+#     settings:
+#       rebuild: true
+#       mount:
+#         - ./node_modules
+# volumes:
+#   - name: cache
+#     host:
+#       path: /var/cache/growhaus
 ---
 kind: pipeline
 name: agent
