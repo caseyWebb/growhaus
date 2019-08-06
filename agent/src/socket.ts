@@ -47,7 +47,7 @@ class Socket {
 
   @autobind
   public sendState() {
-    this.ws.send(state.toJSON())
+    this.ws.send(JSON.stringify(state))
   }
 
   public dispose() {
@@ -102,7 +102,6 @@ class Socket {
 
   @autobind
   private async wsMessage(str: string) {
-    console.log('Received message:', str)
     const message: ManualBrightnessMessage = JSON.parse(str)
     const handlers: any[] = this.onMessageHandlers[message.event]
     if (handlers) {

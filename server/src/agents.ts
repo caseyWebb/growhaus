@@ -7,13 +7,17 @@ import { weather } from './weather'
 
 class Agent extends Subscribable implements AgentData {
   public readonly brightness: number = NaN
+  public pending = false
 
   constructor(public name: string, private socket: WebSocket) {
     super()
 
+    Object.defineProperty(this, 'socket', { enumerable: false })
+
     this.socket.on('message', (data: string) => {
-      console.log('Recieved message', data)
+      this.pending = false
       Object.assign(this, JSON.parse(data))
+      this.next()
     })
 
     this.setBrightnessViaWeather()
@@ -22,6 +26,7 @@ class Agent extends Subscribable implements AgentData {
 
   private setBrightness(brightness: number, duration = 5) {
     console.log(`Setting "${this.name}" to ${brightness}% brightness`)
+    this.pending = true
     this.socket.send(
       JSON.stringify({
         event: 'brightness',
