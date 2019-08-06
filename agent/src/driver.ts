@@ -20,7 +20,10 @@ export class LedDriver {
     this.ready = new Promise(async (resolve) => {
       console.log('Initializing GPIO...')
       const io = await LedDriver.getBoardIO(config.board)
-      const board = new Board({ io })
+      const board = new Board({
+        repl: false,
+        io
+      })
       board.on('ready', () => {
         this.led = new Led(config.pin as any)
         console.log('GPIO initialized.')
