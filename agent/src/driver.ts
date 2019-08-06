@@ -1,11 +1,7 @@
 import autobind from 'autobind-decorator'
 import { Board, Led } from 'johnny-five'
 
-import { BOARD, DRIVER_PWM_PIN } from './config'
-
-export enum BoardType {
-  RaspberryPi = 'pi'
-}
+import { BOARD, DRIVER_PWM_PIN, BoardType } from './config'
 
 class LedDriver {
   private readonly ready: Promise<void>

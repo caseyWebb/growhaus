@@ -1,7 +1,10 @@
 import { resolve } from 'path'
 import dotenv from 'dotenv'
 import { LedOption } from 'pi-io'
-import { BoardType } from './driver'
+
+export enum BoardType {
+  RaspberryPi = 'pi'
+}
 
 dotenv.config({ path: resolve(__dirname, '../../.env') })
 
