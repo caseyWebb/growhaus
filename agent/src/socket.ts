@@ -38,7 +38,7 @@ export class Socket {
   }
 
   public send(state: AgentState) {
-    this.ws.send(state)
+    this.ws.send(JSON.stringify(state))
   }
 
   public dispose() {
