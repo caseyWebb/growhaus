@@ -3,6 +3,8 @@ import autobind from 'autobind-decorator'
 import { Subscribable } from '@caseywebb/growhaus'
 
 class LightSchedule extends Subscribable {
+  public brightness: number
+
   private paused = false
   private pauseTimeout?: NodeJS.Timer
   private readonly updateInterval: NodeJS.Timer
@@ -34,10 +36,9 @@ class LightSchedule extends Subscribable {
     10
   ]
 
-  public brightness = this.getCurrentBrightness()
-
   constructor() {
     super()
+    this.brightness = this.getCurrentBrightness()
     this.updateInterval = setInterval(this.next, 60 * 1000 * 60)
   }
 
