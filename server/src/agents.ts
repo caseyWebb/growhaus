@@ -1,20 +1,20 @@
 import autobind from 'autobind-decorator'
-import { nonenumerable } from 'nonenumerable'
 import * as WebSocket from 'ws'
 
 import { AgentData, Subscribable } from '@caseywebb/growhaus'
 
 import { weather } from './weather'
 
-class Agent extends Subscribable implements AgentData {
-  public readonly brightness: number = NaN
+class Agent extends Subscribable {
+  public readonly state: AgentData = {
+    brightness: NaN
+  }
 
   constructor(public name: string, private socket: WebSocket) {
     super()
-    nonenumerable(this, 'socket')
 
     this.socket.on('message', (data: string) =>
-      Object.assign(this, JSON.parse(data))
+      Object.assign(this.state, JSON.parse(data))
     )
 
     this.setBrightnessViaWeather()

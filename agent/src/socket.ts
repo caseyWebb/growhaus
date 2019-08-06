@@ -47,7 +47,7 @@ class Socket {
 
   @autobind
   public sendState() {
-    this.ws.send(state.toJSON())
+    this.ws.send(JSON.stringify(state))
   }
 
   public dispose() {

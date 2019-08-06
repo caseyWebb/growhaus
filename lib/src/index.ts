@@ -13,7 +13,7 @@ export interface WebApiMessage {
 export interface AgentDataMessage extends WebApiMessage {
   event: WebApiEvents.AgentData
   data: {
-    agents: { [k: string]: AgentData }
+    [k: string]: AgentData
   }
 }
 

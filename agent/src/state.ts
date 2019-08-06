@@ -9,10 +9,6 @@ class AgentState extends Subscribable {
     Object.assign(this, { brightness })
     this.next()
   }
-
-  public toJSON() {
-    return JSON.stringify({ brightness: this.brightness })
-  }
 }
 
 export const state = new AgentState()
