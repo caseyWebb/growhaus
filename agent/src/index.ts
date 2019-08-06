@@ -1,5 +1,4 @@
 import { AGENT_NAME } from './config'
-
 import { driver } from './driver'
 import { offlineFallbackLightSchedule } from './schedule'
 import { Connected, IncomingEvent, socket } from './socket'
@@ -27,7 +26,7 @@ state.subscribe(() => {
   socket.sendState()
 })
 
-socket.on(Connected, () => socket.sendState)
+socket.on(Connected, socket.sendState)
 
 socket.on(IncomingEvent.Brightness, (m) => {
   // pause until 10 minutes after we should have received a new message

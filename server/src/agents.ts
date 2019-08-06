@@ -10,7 +10,9 @@ class Agent extends Subscribable implements AgentData {
 
   constructor(public name: string, private socket: WebSocket) {
     super()
-    this.socket.on('message', (data) => Object.assign(this, data))
+    this.socket.on('message', (data: string) =>
+      Object.assign(this, JSON.parse(data))
+    )
 
     this.setBrightnessViaWeather()
     weather.subscribe(this.setBrightnessViaWeather)

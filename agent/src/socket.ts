@@ -1,7 +1,7 @@
-import { SERVER_URL, AGENT_NAME } from './config'
 import autobind from 'autobind-decorator'
 import WebSocket from 'ws'
 
+import { SERVER_URL, AGENT_NAME } from './config'
 import { state } from './state'
 
 export const Connected = Symbol()
@@ -45,6 +45,7 @@ class Socket {
     this.onMessageHandlers[eventType].push(handler)
   }
 
+  @autobind
   public sendState() {
     this.ws.send(state.toJSON())
   }
