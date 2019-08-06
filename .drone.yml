@@ -1,15 +1,19 @@
 kind: pipeline
 name: build
 steps:
-  # - name: cache:restore
-  #   image: drillster/drone-volume-cache
-  #   volumes:
-  #     - name: cache
-  #       path: /cache
-  #   settings:
-  #     restore: true
-  #     mount:
-  #       - ./node_modules
+  - name: cache:restore
+    image: drillster/drone-volume-cache
+    volumes:
+      - name: cache
+        path: /cache
+    settings:
+      restore: true
+      mount:
+        - ./node_modules
+        - ./agent/node_modules
+        - ./lib/node_modules
+        - ./server/node_modules
+        - ./web/node_modules
   - name: build
     image: node:lts
     environment:
@@ -22,6 +26,7 @@ steps:
       - yarn install --pure-lockfile --ignore-optional --production false
       - yarn build
   - name: publish
+    image: node:lts
     when:
       branch:
         - master
@@ -32,19 +37,23 @@ steps:
       - git fetch --tags
       - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
       - yarn lerna publish major --yes --force-publish --canary --dist-tag canary
-#   - name: cache:rebuild
-#     image: drillster/drone-volume-cache
-#     volumes:
-#       - name: cache
-#         path: /cache
-#     settings:
-#       rebuild: true
-#       mount:
-#         - ./node_modules
-# volumes:
-#   - name: cache
-#     host:
-#       path: /var/cache/growhaus
+  - name: cache:rebuild
+    image: drillster/drone-volume-cache
+    volumes:
+      - name: cache
+        path: /cache
+    settings:
+      rebuild: true
+      mount:
+        - ./node_modules
+        - ./agent/node_modules
+        - ./lib/node_modules
+        - ./server/node_modules
+        - ./web/node_modules
+volumes:
+  - name: cache
+    host:
+      path: /var/cache
 ---
 kind: pipeline
 name: agent
