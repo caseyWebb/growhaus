@@ -10,10 +10,7 @@ steps:
       restore: true
       mount:
         - ./node_modules
-        - ./agent/node_modules
-        - ./lib/node_modules
-        - ./server/node_modules
-        - ./web/node_modules
+        - ./**/node_modules
   - name: build
     image: node:lts
     environment:
@@ -46,10 +43,7 @@ steps:
       rebuild: true
       mount:
         - ./node_modules
-        - ./agent/node_modules
-        - ./lib/node_modules
-        - ./server/node_modules
-        - ./web/node_modules
+        - ./**/node_modules
 volumes:
   - name: cache
     host:
