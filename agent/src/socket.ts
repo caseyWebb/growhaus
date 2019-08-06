@@ -91,8 +91,9 @@ export class Socket {
   }
 
   @autobind
-  private async wsMessage(message: ManualBrightnessMessage) {
-    console.error('Received message:', JSON.stringify(message, null, 2))
+  private async wsMessage(str: string) {
+    console.log('Received message:', str)
+    const message: ManualBrightnessMessage = JSON.parse(str)
     const handlers: any[] = this.onMessageHandlers[message.event]
     if (handlers) {
       await Promise.all(handlers.map((h) => h(message)))
