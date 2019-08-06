@@ -1,4 +1,3 @@
-import { AgentData } from './../../lib/dist/types/index.d'
 import * as route from 'koa-route'
 
 import {
@@ -22,13 +21,7 @@ export const websocketRoutes = [
     const sendAgentData = () =>
       send({
         event: WebApiEvents.AgentData,
-        data: Object.keys(agents).reduce(
-          (accum, k) => ({
-            ...accum,
-            [k]: agents.agents[k].state
-          }),
-          {} as { [k: string]: AgentData }
-        )
+        data: agents
       })
     const sendWeatherData = () =>
       send({
