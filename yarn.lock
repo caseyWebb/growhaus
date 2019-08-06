@@ -131,15 +131,6 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@caseywebb/growhaus@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@caseywebb/growhaus/-/growhaus-0.0.1.tgz#d44cc9edbcba36d0eb139ed00d25797bfcaff550"
-  integrity sha512-OlJFq9to13vVUwWNpMzJiglOjTzUr9RIdbo+Jujh2H/q/R9UsT9wR7o78CYKA5suhwbkZfxsODg/Anie69aHyA==
-  dependencies:
-    autobind-decorator "^2.4.0"
-    nonenumerable "^1.1.1"
-    tslib "^1.10.0"
-
 "@cnakazawa/watch@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.3.tgz#099139eaec7ebf07a27c1786a3ff64f39464d2ef"
@@ -1637,9 +1628,9 @@
     "@types/node" "*"
 
 "@types/jquery@^3.3.30":
-  version "3.3.30"
-  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.3.30.tgz#af4ad612d86d954d74664b2b0ec337a251fddb5b"
-  integrity sha512-chB+QbLulamShZAFcTJtl8opZwHFBpDOP6nRLrPGkhC6N1aKWrDXg2Nc71tEg6ny6E8SQpRwbWSi9GdstH5VJA==
+  version "3.3.31"
+  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.3.31.tgz#27c706e4bf488474e1cb54a71d8303f37c93451b"
+  integrity sha512-Lz4BAJihoFw5nRzKvg4nawXPzutkv7wmfQ5121avptaSIXlDNJCUuxZxX/G+9EVidZGuO0UBlk+YjKbwRKJigg==
   dependencies:
     "@types/sizzle" "*"
 
