@@ -1,7 +1,10 @@
+import { SERVER_URL, AGENT_NAME } from './config'
 import autobind from 'autobind-decorator'
 import WebSocket from 'ws'
 
-import { AgentState } from './state'
+import { state } from './state'
+
+export const Connected = Symbol()
 
 export enum IncomingEvent {
   Brightness = 'brightness'
@@ -16,10 +19,11 @@ export type ManualBrightnessMessage = {
 /**
  * Wrapper that adds type information and deals with connection persistence
  */
-export class Socket {
+class Socket {
   private ws!: WebSocket
   private heartbeatTimeout?: NodeJS.Timer
   private onMessageHandlers = {
+    [Connected]: [] as (() => void)[],
     [IncomingEvent.Brightness]: [] as ((m: ManualBrightnessMessage) => void)[]
   }
 
@@ -29,16 +33,20 @@ export class Socket {
     this.connect()
   }
 
+  public on(eventType: typeof Connected, handler: () => void): void
   public on(
     eventType: IncomingEvent.Brightness,
     handler: (m: ManualBrightnessMessage) => void
   ): void
-  public on(eventType: IncomingEvent, handler: (m?: any) => void) {
+  public on(
+    eventType: typeof Connected | IncomingEvent,
+    handler: (m?: any) => void
+  ) {
     this.onMessageHandlers[eventType].push(handler)
   }
 
-  public send(state: AgentState) {
-    this.ws.send(JSON.stringify(state))
+  public sendState() {
+    this.ws.send(state.toJSON())
   }
 
   public dispose() {
@@ -78,6 +86,7 @@ export class Socket {
     console.log(`Connected to ${this.url}`)
     this.connected = true
     this.wsHeartbeat()
+    this.onMessageHandlers[Connected].forEach((h) => h())
   }
 
   @autobind
@@ -100,3 +109,5 @@ export class Socket {
     }
   }
 }
+
+export const socket = new Socket(`${SERVER_URL}/agent/${AGENT_NAME}}`)

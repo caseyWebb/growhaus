@@ -1,7 +1,7 @@
 import autobind from 'autobind-decorator'
 import { Subscribable } from '@caseywebb/growhaus'
 
-export class AgentState extends Subscribable {
+class AgentState extends Subscribable {
   public readonly brightness: number = 100
 
   @autobind
@@ -9,4 +9,10 @@ export class AgentState extends Subscribable {
     Object.assign(this, { brightness })
     this.next()
   }
+
+  public toJSON() {
+    return JSON.stringify({ brightness: this.brightness })
+  }
 }
+
+export const state = new AgentState()

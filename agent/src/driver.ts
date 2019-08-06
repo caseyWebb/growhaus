@@ -1,31 +1,27 @@
 import autobind from 'autobind-decorator'
 import { Board, Led } from 'johnny-five'
-import { LedOption } from 'pi-io'
+
+import { BOARD, DRIVER_PWM_PIN } from './config'
 
 export enum BoardType {
   RaspberryPi = 'pi'
 }
 
-type LedDriverConfig = {
-  board: BoardType
-  pin: LedOption
-}
-
-export class LedDriver {
+class LedDriver {
   private readonly ready: Promise<void>
 
   private led!: Led
 
-  constructor(config: LedDriverConfig) {
+  constructor() {
     this.ready = new Promise(async (resolve) => {
       console.log('Initializing GPIO...')
-      const io = await LedDriver.getBoardIO(config.board)
+      const io = await LedDriver.getBoardIO()
       const board = new Board({
         repl: false,
         io
       })
       board.on('ready', () => {
-        this.led = new Led(config.pin as any)
+        this.led = new Led(DRIVER_PWM_PIN as any)
         console.log('GPIO initialized.')
         resolve()
       })
@@ -42,13 +38,15 @@ export class LedDriver {
     this.led.brightness(255 - Math.round((percentage / 100) * 255))
   }
 
-  private static async getBoardIO(board: BoardType) {
-    switch (board) {
+  private static async getBoardIO() {
+    switch (BOARD) {
       case BoardType.RaspberryPi:
         const { default: PiIO } = await import('pi-io')
         return new PiIO()
       default:
-        throw new Error(`Unknown board type "${board}"`)
+        throw new Error(`Unknown board type "${BOARD}"`)
     }
   }
 }
+
+export const driver = new LedDriver()

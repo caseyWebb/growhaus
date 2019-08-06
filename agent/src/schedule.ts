@@ -1,10 +1,13 @@
 import autobind from 'autobind-decorator'
 
-export class LightSchedule {
+import { Subscribable } from '@caseywebb/growhaus'
+
+class LightSchedule extends Subscribable {
+  public brightness = this.getCurrentBrightness()
+
   private paused = false
   private pauseTimeout?: NodeJS.Timer
   private readonly updateInterval: NodeJS.Timer
-  private readonly subscriptions = [] as ((brightness: number) => void)[]
   private readonly schedule = [
     10, // midnight
     10,
@@ -34,6 +37,7 @@ export class LightSchedule {
   ]
 
   constructor() {
+    super()
     this.updateInterval = setInterval(this.next, 60 * 1000 * 60)
   }
 
@@ -48,11 +52,6 @@ export class LightSchedule {
     }, duration)
   }
 
-  public subscribe(handler: (b: number) => void) {
-    this.subscriptions.push(handler)
-    this.next()
-  }
-
   public dispose() {
     console.log('Disposing offline schedule...')
     if (this.pauseTimeout) clearTimeout(this.pauseTimeout)
@@ -65,9 +64,12 @@ export class LightSchedule {
   }
 
   @autobind
-  private next() {
+  protected next() {
+    this.brightness = this.getCurrentBrightness()
     if (!this.paused) {
-      this.subscriptions.forEach((s) => s(this.getCurrentBrightness()))
+      super.next()
     }
   }
 }
+
+export const offlineFallbackLightSchedule = new LightSchedule()
