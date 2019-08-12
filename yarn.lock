@@ -6203,9 +6203,9 @@ jest@^24.8.0:
     jest-cli "^24.8.0"
 
 johnny-five@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/johnny-five/-/johnny-five-1.2.0.tgz#82656f0a6281b692e046a419c65a89ae98d6c3bd"
-  integrity sha512-dEiPU3GW4EZ1Cy4CXx5Xdor4hGwDnHqCslgn6uC2MoTzkBomh/ivkfGlcB+Gab8WgR4S0x5MVCekKTz7QF83Qg==
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/johnny-five/-/johnny-five-1.3.0.tgz#23d15b4e4bd1fa469a17303da0981e00480d17b1"
+  integrity sha512-8WhBy7laN+9uHRAdODTL1qpIBf3v4gALpGxkbkdRscgLGMh+EA3LhFGx0AvuI0wGku7ASWwu3u3DMUYlvVW+oA==
   dependencies:
     chalk "2.1.0"
     color-convert "~1.2.2"
