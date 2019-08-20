@@ -1640,10 +1640,10 @@
     "@types/istanbul-lib-coverage" "*"
     "@types/istanbul-lib-report" "*"
 
-"@types/johnny-five@^0.0.41":
-  version "0.0.41"
-  resolved "https://registry.yarnpkg.com/@types/johnny-five/-/johnny-five-0.0.41.tgz#0e46fd432b3c0fb9c56cc84254e689d29aa2a968"
-  integrity sha512-otFIKKF3T2JtFniz8mbpgJGgdO5iLwxzayinISfPos33jCwrya6UIQFdmoOMUd/U1wINdLfMxLDtYf3YA+LcZg==
+"@types/johnny-five@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@types/johnny-five/-/johnny-five-1.3.0.tgz#4d385f9611645da9e38666eb90cdd88350e59975"
+  integrity sha512-V2GNfEJDXBjM3bUmUx8295wBgu+2OrnCw2t9W0giwKg6roZpwfVMHSuiUR/1fITEoSwbnzZByWvonIjSHeMUng==
   dependencies:
     "@types/node" "*"
 
