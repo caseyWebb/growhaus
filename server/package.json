@@ -17,7 +17,7 @@
     "@caseywebb/growhaus": "1.0.0",
     "autobind-decorator": "^2.4.0",
     "dotenv": "^8.0.0",
-    "koa": "^2.7.0",
+    "koa": "^2.8.2",
     "koa-route": "^3.2.0",
     "koa-websocket": "^6.0.0",
     "node-fetch": "^2.6.0",
