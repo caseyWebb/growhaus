@@ -15,7 +15,7 @@
     "@caseywebb/growhaus": "1.0.0",
     "@profiscience/knockout-contrib": "^2.0.13",
     "@types/jquery": "^3.3.30",
-    "@types/lodash": "^4.14.136",
+    "@types/lodash": "^4.14.142",
     "@types/node": "^12.6.8",
     "autobind-decorator": "^2.4.0",
     "cache-loader": "^4.1.0",
