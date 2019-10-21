@@ -29,7 +29,7 @@
     "@types/koa-route": "^3.2.4",
     "@types/koa-websocket": "^5.0.4",
     "@types/node": "^12.11.2",
-    "@types/node-fetch": "^2.5.1",
+    "@types/node-fetch": "^2.5.2",
     "concurrently": "^4.1.1",
     "nodemon": "^1.19.4",
     "typescript": "^3.5.3"
