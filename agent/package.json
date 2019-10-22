@@ -21,7 +21,7 @@
     "dotenv": "^8.2.0",
     "johnny-five": "^1.2.0",
     "tslib": "^1.10.0",
-    "ws": "^7.1.0"
+    "ws": "^7.2.0"
   },
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
