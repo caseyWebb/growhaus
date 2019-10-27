@@ -24,7 +24,7 @@
     "tslib": "^1.10.0"
   },
   "devDependencies": {
-    "@types/dotenv": "^6.1.1",
+    "@types/dotenv": "^8.2.0",
     "@types/koa": "^2.0.51",
     "@types/koa-route": "^3.2.4",
     "@types/koa-websocket": "^5.0.4",
