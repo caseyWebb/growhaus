@@ -21,7 +21,7 @@
   "devDependencies": {
     "@types/jquery": "^3.3.30",
     "dotenv": "^8.2.0",
-    "eslint": "^6.5.1",
+    "eslint": "^6.7.1",
     "eslint-config-profiscience": "^4.1.10",
     "husky": "^3.0.9",
     "is-docker": "^2.0.0",
