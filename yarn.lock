@@ -1159,10 +1159,10 @@
   dependencies:
     babel-runtime "^6.26.0"
 
-"@profiscience/knockout-contrib-components-flash-message@^2.0.9":
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-components-flash-message/-/knockout-contrib-components-flash-message-2.0.9.tgz#a137df916fb60d954688e7170cdebf18096caafd"
-  integrity sha512-VpStdC3Uvy7jWcbURn40stYPHriFn5zEMGMA7kAX3KKPplKbFMZCDYV8zZqm0qX0cPOvPJwjPprAmus/cHGzfw==
+"@profiscience/knockout-contrib-components-flash-message@^2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-components-flash-message/-/knockout-contrib-components-flash-message-2.0.10.tgz#910b7e916a243b5f35e19769fb03a7baf90271a2"
+  integrity sha512-551F9wiRcjDVukREmUycp0qtufAIoEoxQkjCj0qQAMrbOGb+pMWfJaGfcQNUyf1Z+8WvyKuxYB3sVN5+DGAZAg==
   dependencies:
     "@profiscience/knockout-contrib-model-builders-view" "^2.0.1"
     babel-runtime "^6.26.0"
@@ -1183,10 +1183,10 @@
   dependencies:
     babel-runtime "^6.26.0"
 
-"@profiscience/knockout-contrib-model-builders-data@^2.1.5":
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-model-builders-data/-/knockout-contrib-model-builders-data-2.1.5.tgz#6fc7a7744335aaf27b94c99d75f8b0c76941dad0"
-  integrity sha512-zYB5IWcGSatsr6MRO54ObYgGufa6i1ChYjLoYA3Jhkv3A5WvqDmR9DSSrJMFzK6Su1QZZZFNfROQ3DoJ8BDKzA==
+"@profiscience/knockout-contrib-model-builders-data@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-model-builders-data/-/knockout-contrib-model-builders-data-2.3.1.tgz#012a3526043f5c4d92e2a132f6bdee9f496d4e4c"
+  integrity sha512-ssgMkATmTHfO7baOemwFFiYw9eafB/yrToa2rNMy3UF9c1CG6KaKbiuCEXSEn5LdUBmakLWdr5c6ctFwitPyCg==
   dependencies:
     "@profiscience/knockout-contrib-model-builders-base" "^2.0.1"
     "@profiscience/knockout-contrib-model-mixins-disposal-aggregator" "^2.0.1"
@@ -1212,19 +1212,19 @@
     "@profiscience/knockout-contrib-model-builders-base" "^2.0.1"
     babel-runtime "^6.26.0"
 
-"@profiscience/knockout-contrib-model-mixins-pager@^2.0.10":
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-model-mixins-pager/-/knockout-contrib-model-mixins-pager-2.0.10.tgz#c291785c4512030844d2036bf8dd677083680e4b"
-  integrity sha512-DXT2dIHn0n0tn9tt7CTqFUVu13/uS250tH9nFOk3oB3CDjpF4UnV6bxJ3Xsw8Jh8dg4TWa8BWw98S/O1m2OUAA==
+"@profiscience/knockout-contrib-model-mixins-pager@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-model-mixins-pager/-/knockout-contrib-model-mixins-pager-2.1.1.tgz#4687ad4ab98897ac0974139f86fff3474e91e20b"
+  integrity sha512-MOiYeqE1lFum7DtMOFgmXNbT82pF+hTMMD3e65JVoVEiko8HhRicYIh8HRhC/rVVSoHqdChhOroE0y9sGWxPrA==
   dependencies:
     babel-runtime "^6.26.0"
     core-js "^3.1.3"
     jsx-dom "^6.3.1"
 
-"@profiscience/knockout-contrib-model-mixins-query@^1.1.7":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-model-mixins-query/-/knockout-contrib-model-mixins-query-1.1.7.tgz#5edabb2bb3a58df90e1df380f34166cad930c798"
-  integrity sha512-IWlbPfoguqDyadRvLkQTDssCOP2Ana35jBG0m2+E/yaO6jbIWBlNuosTx4rKj5vTFxXgzZcr+CLo5ddWfPjUbw==
+"@profiscience/knockout-contrib-model-mixins-query@^1.1.11":
+  version "1.1.11"
+  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-model-mixins-query/-/knockout-contrib-model-mixins-query-1.1.11.tgz#5217e555bae1cd7f712ec1e1101e4682cc7c635b"
+  integrity sha512-uBwDHHJzdKtEBam0ke1EuIe6U2LJein6jb++48AFedgW7XNwhD0tmrGxRUbLuQMcs7dhD64LKW0o7UNac6rKOA==
   dependencies:
     babel-runtime "^6.26.0"
 
@@ -1236,10 +1236,10 @@
     "@profiscience/knockout-contrib-model-builders-base" "^2.0.1"
     babel-runtime "^6.26.0"
 
-"@profiscience/knockout-contrib-model-mixins-transform@^2.0.10":
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-model-mixins-transform/-/knockout-contrib-model-mixins-transform-2.0.10.tgz#ce563b7593015f7c2cb950e20741af237fea1000"
-  integrity sha512-G/ueYhGhpa7FtEnhfQ7s03xze7p2S7PzXbKnmHbM+Ad+y5MqtrQwvmetAi8hOcWfama5pfapRZ9hKsIC2DbnRg==
+"@profiscience/knockout-contrib-model-mixins-transform@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-model-mixins-transform/-/knockout-contrib-model-mixins-transform-2.1.1.tgz#c038d034336b725d6d827cfc540d4db3b7484c0b"
+  integrity sha512-I80kF9ltwVLPgGKd9eGWKVtqkyCnXJALaM/wbm0GSPEBIgrDrihaG/TCrfZWvZYF3FYXH2yqfKMSsnvXDrmCAA==
   dependencies:
     babel-runtime "^6.26.0"
 
@@ -1250,92 +1250,92 @@
   dependencies:
     babel-runtime "^6.26.0"
 
-"@profiscience/knockout-contrib-router-middleware-flash-message@^2.0.9":
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-middleware-flash-message/-/knockout-contrib-router-middleware-flash-message-2.0.9.tgz#d1f240cd2cb75f0604f39bae72523d6bee6b2f08"
-  integrity sha512-kbA104sstneN6hi/xq7N4CYbxkGHY6LgPlrVah9p+aViNpls/plS9SRxP3Vnt8BC6t3iYHRe6IZnyiATdrtBgA==
+"@profiscience/knockout-contrib-router-middleware-flash-message@^2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-middleware-flash-message/-/knockout-contrib-router-middleware-flash-message-2.0.10.tgz#04786c7feece5360ef135385b1466c45148bda22"
+  integrity sha512-OI7qLJDUpFTOyGF6vusDi6OGw15aEyf7vXEtLdfsH114KE69Z6eiLO8Ccc37FjDgFllYfkUFXhYg3nCVfEWMuQ==
   dependencies:
     babel-runtime "^6.26.0"
 
-"@profiscience/knockout-contrib-router-middleware-loading@^1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-middleware-loading/-/knockout-contrib-router-middleware-loading-1.0.10.tgz#35066b57ab4efd58c7913449ba72a5b15c8c2716"
-  integrity sha512-xNsW3su6j+FLXk3RhzlrMFb26z7ezFV0ljF5ZckUWuJkmtpBLw6I/wBD68uTC5+9WvADsddGLCWESbbQXcE65A==
+"@profiscience/knockout-contrib-router-middleware-loading@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-middleware-loading/-/knockout-contrib-router-middleware-loading-1.0.11.tgz#5c7b208194bebef625da32e3d6d50b444c5cac5c"
+  integrity sha512-kxaNH/1B6B35blKrYsasP9EE7oXbVEO0GiLvwdGZ6Pf9v7FyfQkQqSD+WM392qywgNw7nHyDa0b+Wt+4rnOugg==
   dependencies:
     babel-runtime "^6.26.0"
 
-"@profiscience/knockout-contrib-router-middleware-progress-bar@^2.0.9":
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-middleware-progress-bar/-/knockout-contrib-router-middleware-progress-bar-2.0.9.tgz#d94bad2aca109e7ca7cb726e1312243c56bb4fa0"
-  integrity sha512-Sn648ROzcw0WADcbce9FoDXjRDRs6t4DZKI4F2r0ukqK6XEqko3QH9rEyrVDADw171F9lt7ejrEUblZC78/0kw==
+"@profiscience/knockout-contrib-router-middleware-progress-bar@^2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-middleware-progress-bar/-/knockout-contrib-router-middleware-progress-bar-2.0.10.tgz#cb07d35a2d964ab9fe20028e833681795098cec7"
+  integrity sha512-Gm2asLw3T3RjKGmqGfjlqO3H+SfECKuKzLc0Dr621ofxEEJA1xRBmHOpY6lCDjjTM8tEzhZqOKDW56Dw9ElEKA==
   dependencies:
-    "@profiscience/knockout-contrib-router-middleware-loading" "^1.0.10"
+    "@profiscience/knockout-contrib-router-middleware-loading" "^1.0.11"
     babel-runtime "^6.26.0"
     toprogress2 "^2.0.0"
 
-"@profiscience/knockout-contrib-router-middleware-scroll-position@^2.0.9":
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-middleware-scroll-position/-/knockout-contrib-router-middleware-scroll-position-2.0.9.tgz#715b10aa2d421bd4fc12da56ef2fc4003be42d9c"
-  integrity sha512-+/pigtq7ptgzxaC7NKLq66dwit9IkLsX44kPlpX3EJiGQ7jG7QQ0dk4IxDbF5PaLc2Ac4ozDCYpj7YpNONZOEQ==
-  dependencies:
-    babel-runtime "^6.26.0"
-
-"@profiscience/knockout-contrib-router-plugins-children@^2.0.9":
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-plugins-children/-/knockout-contrib-router-plugins-children-2.0.9.tgz#97fbaff3b46512d1c40ba08670506ce52cbe9d43"
-  integrity sha512-iGMdWz4rEDcYD4dsF/eegtGLDR08EjfpgCDEKgYXlFLMv9m2oEWYBUXXi8aeuPqrc9ZDPswSJC+f04UNWHdz7w==
-  dependencies:
-    babel-runtime "^6.26.0"
-
-"@profiscience/knockout-contrib-router-plugins-component@^2.0.9":
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-plugins-component/-/knockout-contrib-router-plugins-component-2.0.9.tgz#be20028f8b0045b6bb73545d7db8ffb821e3af91"
-  integrity sha512-MkmJh8XRvqOj/VPGfpzq5/GPeTzIU7ViQ3ISiQ/imFJxYO1FjCl4s1eucGLh0lA9dJ3hYQVfRBSjNrgbyD/RGw==
-  dependencies:
-    babel-runtime "^6.26.0"
-
-"@profiscience/knockout-contrib-router-plugins-components@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-plugins-components/-/knockout-contrib-router-plugins-components-1.0.9.tgz#c4f5d7f18b350eb97f94fcd04037bdbaec9e3773"
-  integrity sha512-H33PIB0VYEm31aMhoP9QbrlJkY5SOFDiMWcDSocHkAqvE/H/1dO1xepi/ZbiOIZ0SrK2F1Ued0uNc4KstQPYQg==
-  dependencies:
-    babel-runtime "^6.26.0"
-
-"@profiscience/knockout-contrib-router-plugins-init@^2.0.9":
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-plugins-init/-/knockout-contrib-router-plugins-init-2.0.9.tgz#2dd6972a4d83eda2e5e538791d080a55c8365fac"
-  integrity sha512-hW5eJ+b30c5fYdTFMmZokFNZOqyZUPL1W4fFcPUorCiwpCvVNk8ZDKFuOqyPbMxFov64296IM6JSEFjOdlaU3A==
-  dependencies:
-    babel-runtime "^6.26.0"
-
-"@profiscience/knockout-contrib-router-plugins-redirect@^2.0.9":
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-plugins-redirect/-/knockout-contrib-router-plugins-redirect-2.0.9.tgz#63db266efcf80133d03810e6875cd3e2671e48a3"
-  integrity sha512-EdsA6lGM8DAea9VlqCaQHrq4aK6IVYCqCnjsygap+dzjakGXZ1dRbjlfqu4Yj3PS4A8KlyglZOTF8ZAWjbxqaA==
-  dependencies:
-    babel-runtime "^6.26.0"
-
-"@profiscience/knockout-contrib-router-plugins-title@^2.0.10":
+"@profiscience/knockout-contrib-router-middleware-scroll-position@^2.0.10":
   version "2.0.10"
-  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-plugins-title/-/knockout-contrib-router-plugins-title-2.0.10.tgz#49cf213622d66d6cd76cb0e52af32f2e713a8765"
-  integrity sha512-uuJA/T9ppdGnYf/8wGUv5d0WuAqvw4W8xxugO7fxJzHz5NQE4h2EuWt9LQd/e3rci/isV9CHYwc1HPSNQTDy+Q==
+  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-middleware-scroll-position/-/knockout-contrib-router-middleware-scroll-position-2.0.10.tgz#660f4c1de4944fa95a6f1845b7779693644ac0b8"
+  integrity sha512-TifnqIHKN82uatHmey1aKnN+Mrdi2Hmi4AETiIjKSoh3Exvcn0uREk78nOiIRqLicYmUmbS+Kq8ioZq+PnI8WA==
   dependencies:
     babel-runtime "^6.26.0"
 
-"@profiscience/knockout-contrib-router-plugins-with@^2.0.9":
+"@profiscience/knockout-contrib-router-plugins-children@^2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-plugins-children/-/knockout-contrib-router-plugins-children-2.0.10.tgz#93c034d5439af4e226785557a91baccf77c7cc96"
+  integrity sha512-bMsrzZ/XXV1jYR/yQTTYbDM/79jt6xKwvkIrFgIzV7LPEaxFaJ1p/DMklxpO2KLPXhV21A7a4h6/UtxrhVf8DQ==
+  dependencies:
+    babel-runtime "^6.26.0"
+
+"@profiscience/knockout-contrib-router-plugins-component@^2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-plugins-component/-/knockout-contrib-router-plugins-component-2.0.10.tgz#2856c9684990bac000161042eb20c7200fd439b0"
+  integrity sha512-LmyIdCP6oVzrveIZaZRgrCXBtHUKfulqQAZte95mIU7scyaYs6svQWd/9PV6PN4q9uApX8vhNnHzoBMCSLXQAQ==
+  dependencies:
+    babel-runtime "^6.26.0"
+
+"@profiscience/knockout-contrib-router-plugins-components@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-plugins-components/-/knockout-contrib-router-plugins-components-1.0.10.tgz#a317a744ce764f4f4ba87bce6bc3e7cb7ba39959"
+  integrity sha512-TKeiv91Ju0a/PZS2T+F5H9mSxiLyqo+jmhkHnUmu3HxdIdMNfdbgAwiw9WvLOqJuC7esXcbOkEvwCFt6RPfvYw==
+  dependencies:
+    babel-runtime "^6.26.0"
+
+"@profiscience/knockout-contrib-router-plugins-init@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-plugins-init/-/knockout-contrib-router-plugins-init-3.0.0.tgz#b960dbbbd5d84aab88c9587c54b66d668a1e06c2"
+  integrity sha512-pwo7bhAASa853wEDud6WWCYEHWX3YJGWZ9DXsflem9VayH+77QQ7LsNSO2X8dLJVkKKQFnsB+tG0h7NlEFunRg==
+  dependencies:
+    babel-runtime "^6.26.0"
+
+"@profiscience/knockout-contrib-router-plugins-redirect@^2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-plugins-redirect/-/knockout-contrib-router-plugins-redirect-2.0.10.tgz#69eda0c2ccb035d27de8442e44599f84db74a69a"
+  integrity sha512-XtWUS1ypXOw95NW4N2V0vnJ/ZPFWPzLdKYU6izOPx90beYR9Eim/+Tc9+2xfXMHM0y4RAz5IR/YVPGeWUMLs9w==
+  dependencies:
+    babel-runtime "^6.26.0"
+
+"@profiscience/knockout-contrib-router-plugins-title@^2.0.11":
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-plugins-title/-/knockout-contrib-router-plugins-title-2.0.11.tgz#73fa2188c5ccf842eac4c754ea46f493e8f67c47"
+  integrity sha512-B60LhicUnCIeccGfHR+vUzl7EIaPN/cwW13BC25Zju6bv02cpPvwkp9Bp1GYV4jZuCxnXWOnB90kDGmIahy0bA==
+  dependencies:
+    babel-runtime "^6.26.0"
+
+"@profiscience/knockout-contrib-router-plugins-with@^2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-plugins-with/-/knockout-contrib-router-plugins-with-2.0.10.tgz#082da590da245225d83e23aecdedf0966a472a2c"
+  integrity sha512-6SFOi5tWyb2EdmHSPKysVpcyDyeBwAhRgWPqvGSTUTXeSsNHxiQeyn9xbUQvLoNkS23WSio4QC9eyMsLmL80Uw==
+  dependencies:
+    babel-runtime "^6.26.0"
+
+"@profiscience/knockout-contrib-router@^2.0.9":
   version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router-plugins-with/-/knockout-contrib-router-plugins-with-2.0.9.tgz#c77081d9f5e4c81b3c393b594158a8ef23ce5ee3"
-  integrity sha512-2KE4Sm06uww4zfHj8cX33ZoDMzP2y4PlSFMMiVwXUzpc4H97tikXNiqTO+cwfwBRzPYv0j61K99QQX8d1S6VXw==
+  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router/-/knockout-contrib-router-2.0.9.tgz#d48d2246d9b16e5a92375325da3ac175ebf46117"
+  integrity sha512-bcP+6pPgVEpH6nNVDimxWC0OfSTtAyLMOZ+sUcxBtdWlaX8CIh6ojJUdTtI5BHYUpLQorzPkFjXQDzD9AbvagQ==
   dependencies:
     babel-runtime "^6.26.0"
-
-"@profiscience/knockout-contrib-router@^2.0.8":
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib-router/-/knockout-contrib-router-2.0.8.tgz#9a6487bd6adc65582c4c2b5ab76ad5ab622b05ef"
-  integrity sha512-7NEBjMATwxAaAgiqtJjREqGNry3XyMS5s9AZ0M3egQjrSuluPoLlbnGs+OYHGQoBbvzfh+k06RoFkeALw10nWw==
-  dependencies:
-    babel-runtime "^6.26.0"
-    path-to-regexp "^3.0.0"
+    path-to-regexp "^6.0.0"
 
 "@profiscience/knockout-contrib-utils-assign@^2.0.2":
   version "2.0.2"
@@ -1388,10 +1388,10 @@
   dependencies:
     babel-runtime "^6.26.0"
 
-"@profiscience/knockout-contrib@^2.0.17":
-  version "2.0.17"
-  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib/-/knockout-contrib-2.0.17.tgz#c09616903bb55724d81388252aae6f906ec6e6da"
-  integrity sha512-Xy3fofGNu6RsfCzOAyZnNdmLFHNPUHjaRZCIfRLxODRwwItoPSjv8VDqhDpP3NF34EQQvsUfoOTnWLE3uR2dpA==
+"@profiscience/knockout-contrib@^2.0.21":
+  version "2.0.21"
+  resolved "https://registry.yarnpkg.com/@profiscience/knockout-contrib/-/knockout-contrib-2.0.21.tgz#9a5d953e1ef514d9373c832acb1724045118f6b7"
+  integrity sha512-Fr3Y00PH9GcvlrqMG8OylUqPt+tZVOCsXRlx1U2S0qaUPiAvrPAtlA7rzPpLrQ2yxge4+wy6mJ85VHBsXS81ig==
   dependencies:
     "@profiscience/knockout-contrib-bindings-click-alt" "^2.0.0"
     "@profiscience/knockout-contrib-bindings-click-ctrl" "^2.0.0"
@@ -1400,25 +1400,25 @@
     "@profiscience/knockout-contrib-bindings-draggable" "^1.1.0"
     "@profiscience/knockout-contrib-bindings-jquery" "^2.0.0"
     "@profiscience/knockout-contrib-bindings-toggle" "^2.0.0"
-    "@profiscience/knockout-contrib-components-flash-message" "^2.0.9"
+    "@profiscience/knockout-contrib-components-flash-message" "^2.0.10"
     "@profiscience/knockout-contrib-filters-date-format" "^2.0.2"
-    "@profiscience/knockout-contrib-model-builders-data" "^2.1.5"
+    "@profiscience/knockout-contrib-model-builders-data" "^2.3.1"
     "@profiscience/knockout-contrib-model-builders-view" "^2.0.1"
-    "@profiscience/knockout-contrib-model-mixins-pager" "^2.0.10"
-    "@profiscience/knockout-contrib-model-mixins-query" "^1.1.7"
-    "@profiscience/knockout-contrib-model-mixins-transform" "^2.0.10"
+    "@profiscience/knockout-contrib-model-mixins-pager" "^2.1.1"
+    "@profiscience/knockout-contrib-model-mixins-query" "^1.1.11"
+    "@profiscience/knockout-contrib-model-mixins-transform" "^2.1.1"
     "@profiscience/knockout-contrib-query" "^2.1.3"
-    "@profiscience/knockout-contrib-router" "^2.0.8"
-    "@profiscience/knockout-contrib-router-middleware-flash-message" "^2.0.9"
-    "@profiscience/knockout-contrib-router-middleware-progress-bar" "^2.0.9"
-    "@profiscience/knockout-contrib-router-middleware-scroll-position" "^2.0.9"
-    "@profiscience/knockout-contrib-router-plugins-children" "^2.0.9"
-    "@profiscience/knockout-contrib-router-plugins-component" "^2.0.9"
-    "@profiscience/knockout-contrib-router-plugins-components" "^1.0.9"
-    "@profiscience/knockout-contrib-router-plugins-init" "^2.0.9"
-    "@profiscience/knockout-contrib-router-plugins-redirect" "^2.0.9"
-    "@profiscience/knockout-contrib-router-plugins-title" "^2.0.10"
-    "@profiscience/knockout-contrib-router-plugins-with" "^2.0.9"
+    "@profiscience/knockout-contrib-router" "^2.0.9"
+    "@profiscience/knockout-contrib-router-middleware-flash-message" "^2.0.10"
+    "@profiscience/knockout-contrib-router-middleware-progress-bar" "^2.0.10"
+    "@profiscience/knockout-contrib-router-middleware-scroll-position" "^2.0.10"
+    "@profiscience/knockout-contrib-router-plugins-children" "^2.0.10"
+    "@profiscience/knockout-contrib-router-plugins-component" "^2.0.10"
+    "@profiscience/knockout-contrib-router-plugins-components" "^1.0.10"
+    "@profiscience/knockout-contrib-router-plugins-init" "^3.0.0"
+    "@profiscience/knockout-contrib-router-plugins-redirect" "^2.0.10"
+    "@profiscience/knockout-contrib-router-plugins-title" "^2.0.11"
+    "@profiscience/knockout-contrib-router-plugins-with" "^2.0.10"
     "@profiscience/knockout-contrib-utils-assign" "^2.0.2"
     "@profiscience/knockout-contrib-utils-defaults" "^2.1.0"
     "@profiscience/knockout-contrib-utils-from-js" "^2.0.0"
@@ -8028,10 +8028,10 @@ path-to-regexp@^1.2.0, path-to-regexp@^1.7.0:
   dependencies:
     isarray "0.0.1"
 
-path-to-regexp@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-3.0.0.tgz#c981a218f3df543fa28696be2f88e0c58d2e012a"
-  integrity sha512-ZOtfhPttCrqp2M1PBBH4X13XlvnfhIwD7yCLx+GoGoXRPQyxGOTdQMpIzPSPKXAJT/JQrdfFrgdJOyAzvgpQ9A==
+path-to-regexp@^6.0.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-6.1.0.tgz#0b18f88b7a0ce0bfae6a25990c909ab86f512427"
+  integrity sha512-h9DqehX3zZZDCEm+xbfU0ZmwCGFCAAraPJWMXJ4+v32NjZJilVg3k1TcKsRgIb8IQ/izZSaydDc1OhJCZvs2Dw==
 
 path-type@^1.0.0:
   version "1.1.0"
