@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@caseywebb/growhaus": "1.0.0",
-    "@profiscience/knockout-contrib": "^2.0.17",
+    "@profiscience/knockout-contrib": "^2.0.22",
     "@types/jquery": "^3.3.30",
     "@types/lodash": "^4.14.144",
     "@types/node": "^12.11.7",
