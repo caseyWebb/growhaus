@@ -21,7 +21,7 @@
     "tslib": "^1.10.0"
   },
   "devDependencies": {
-    "concurrently": "^4.1.1",
+    "concurrently": "^5.0.1",
     "typescript": "^3.6.4"
   }
 }
