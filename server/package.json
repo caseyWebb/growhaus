@@ -28,7 +28,7 @@
     "@types/koa": "^2.0.51",
     "@types/koa-route": "^3.2.4",
     "@types/koa-websocket": "^5.0.4",
-    "@types/node": "^12.11.7",
+    "@types/node": "^13.9.0",
     "@types/node-fetch": "^2.5.2",
     "concurrently": "^4.1.1",
     "nodemon": "^1.19.4",
