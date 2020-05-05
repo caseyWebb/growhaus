@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/caseyWebb/growhaus/compare/v1.1.1...v1.2.0) (2020-05-05)
+
+### Features
+
+- add GET request handler ([e9df753](https://github.com/caseyWebb/growhaus/commit/e9df753a520ee62417ea80282bf71333d1bb36d7))
+- add POST api ([11b203d](https://github.com/caseyWebb/growhaus/commit/11b203d033889bee1966728cbc4f290e7049d5f3))
+
 ### [1.1.1](https://github.com/caseyWebb/growhaus/compare/v1.1.0...v1.1.1) (2020-05-05)
 
 ## [1.1.0](https://github.com/caseyWebb/growhaus/compare/v0.0.1...v1.1.0) (2020-05-05)
