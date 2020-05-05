@@ -2,14 +2,26 @@ export class LightSchedule {
   public current = 0
 
   private readonly subscriptions: Array<(v: number) => void> = []
+  private interval?: NodeJS.Timeout
+  private resumeTimeout?: NodeJS.Timeout
 
   constructor() {
     this.update()
-    setInterval(() => this.update(), 60000)
+    this.start()
   }
 
   public subscribe(cb: (value: number) => void): void {
     this.subscriptions.push(cb)
+  }
+
+  public pause(minutes: number): void {
+    if (this.interval) clearInterval(this.interval)
+    if (this.resumeTimeout) clearTimeout(this.resumeTimeout)
+    this.resumeTimeout = setTimeout(() => this.start(), minutes * 60 * 1000)
+  }
+
+  private start(): void {
+    this.interval = setInterval(() => this.update(), 60 * 1000)
   }
 
   private update(): void {
@@ -40,3 +52,5 @@ export class LightSchedule {
     return nowH > 12 ? 255 - progress : progress
   }
 }
+
+export const schedule = new LightSchedule()

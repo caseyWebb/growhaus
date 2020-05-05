@@ -3,6 +3,7 @@ import bodyParser from 'koa-body'
 
 import { driver } from './driver'
 import { log } from './logger'
+import { schedule } from './schedule'
 
 const app = new Koa()
 
@@ -21,17 +22,17 @@ app.use((ctx) => {
         try {
           const value = parseInt(ctx.request.body.brightness)
           if (isNaN(value) || value < 0 || value > 255) {
-            ctx.status = 400
-            ctx.message = `Invalid request body, should be integer between 0-255. Received ${JSON.stringify(
-              ctx.request.body
-            )}`
+            throw new Error()
           } else {
+            let duration = parseInt(ctx.request.body.duration)
+            if (isNaN(duration)) duration = 15
             ctx.status = 200
             driver.setBrightness(value)
+            schedule.pause(duration)
           }
         } catch (e) {
           ctx.status = 400
-          ctx.message = `Invalid request body. Expected object { "brightness": 0-255 }, received ${JSON.stringify(
+          ctx.message = `Invalid request body. Expected object { "brightness": 0-255, "duration": 15 }, received ${JSON.stringify(
             ctx.request.body
           )}`
         }
