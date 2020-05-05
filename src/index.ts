@@ -1,5 +1,5 @@
 import { driver } from './driver'
-import { schedule } from './schedule'
+import { LightSchedule } from './schedule'
 
 console.log(`Starting agent...`)
 
@@ -15,5 +15,7 @@ const quit = () => {
   process.off('SIGINT', quit)
 }
 process.on('SIGINT', quit)
+
+const schedule = new LightSchedule()
 
 schedule.subscribe((v) => driver.setBrightness(v))

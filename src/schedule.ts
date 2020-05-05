@@ -1,4 +1,4 @@
-class LightSchedule {
+export class LightSchedule {
   public current = 0
 
   private readonly subscriptions: Array<(v: number) => void> = []
@@ -33,11 +33,10 @@ class LightSchedule {
       (nowH < 12 ? peakBegin - dayBegin : dayEnd - peakEnd) * 60
     const transitionPeriodProgressInMinutes =
       (nowH - (nowH < 12 ? dayBegin : peakEnd)) * 60 + nowM
-    return Math.round(
+    const progress = Math.round(
       (100 * transitionPeriodProgressInMinutes) /
         transitionPeriodLengthInMinutes
     )
+    return nowH > 12 ? 100 - progress : progress
   }
 }
-
-export const schedule = new LightSchedule()
