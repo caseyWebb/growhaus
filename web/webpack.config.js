@@ -29,7 +29,7 @@ console.log(
       NODE_ENV,
       SERVER_URL,
       WEB_UI_URL,
-      PRODUCTION
+      PRODUCTION,
     },
     null,
     2
@@ -43,16 +43,16 @@ module.exports = {
   devtool: 'source-map',
   output: {
     chunkFilename: '[name].[chunkhash].js',
-    publicPath: WEB_UI_URL ? url.parse(WEB_UI_URL).pathname : '/'
+    publicPath: WEB_UI_URL ? url.parse(WEB_UI_URL).pathname : '/',
   },
   devServer: {
-    port: WEB_UI_DEV_SERVER_PORT
+    port: WEB_UI_DEV_SERVER_PORT,
   },
   optimization: {
     splitChunks: {
-      chunks: 'all'
+      chunks: 'all',
     },
-    runtimeChunk: true
+    runtimeChunk: true,
   },
   recordsPath: path.join(__dirname, '.cache/records.json'),
   module: {
@@ -64,22 +64,22 @@ module.exports = {
           {
             loader: 'cache-loader',
             options: {
-              cacheDirectory: path.resolve(__dirname, '.cache/ts')
-            }
+              cacheDirectory: path.resolve(__dirname, '.cache/ts'),
+            },
           },
           {
             loader: 'thread-loader',
             options: {
-              workers: Math.min(Math.floor(AVAILABLE_CPUS / 2), 4)
-            }
+              workers: Math.min(Math.floor(AVAILABLE_CPUS / 2), 4),
+            },
           },
           {
             loader: 'ts-loader',
             options: {
-              happyPackMode: true
-            }
-          }
-        ]
+              happyPackMode: true,
+            },
+          },
+        ],
       },
       {
         test: /\.html$/,
@@ -87,10 +87,9 @@ module.exports = {
         loader: 'html-loader',
         options: {
           minimize: PRODUCTION,
-          ignoreCustomComments: [/^\s*\/?ko/]
-        }
-      }
-    ]
+        },
+      },
+    ],
   },
   resolve: {
     alias: {
@@ -100,9 +99,9 @@ module.exports = {
         .replace(
           'knockout-latest',
           PRODUCTION ? 'knockout-latest' : 'knockout-latest.debug'
-        )
+        ),
     },
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js'],
   },
   plugins: [
     // provide DEBUG constant to app, will be statically analyzable so `if (DEBUG)` statements
@@ -111,7 +110,7 @@ module.exports = {
       mapValues(JSON.stringify, {
         DEBUG: !PRODUCTION,
         SERVER_URL,
-        WEB_UI_URL
+        WEB_UI_URL,
       })
     ),
 
@@ -119,12 +118,12 @@ module.exports = {
       async: false,
       // workers: Math.min(Math.floor(AVAILABLE_CPUS / 2), 4),
       workers: 1,
-      checkSyntacticErrors: true
+      checkSyntacticErrors: true,
     }),
 
     // generate dist/index.html, injecting entry bundles into `src/index.html`
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      template: 'src/index.html',
     }),
 
     ...(PRODUCTION
@@ -133,16 +132,16 @@ module.exports = {
             defaultAttribute: 'defer',
             prefetch: {
               test: /\.js$/,
-              chunks: 'async'
+              chunks: 'async',
             },
             inline: {
-              test: [/runtime/]
-            }
-          })
+              test: [/runtime/],
+            },
+          }),
         ]
       : [
           // readable HMR output
-          new NamedModulesPlugin()
-        ])
-  ]
+          new NamedModulesPlugin(),
+        ]),
+  ],
 }

@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@types/jquery": "^3.3.30",
+    "@types/lodash": "^4.14.150",
     "dotenv": "^8.2.0",
     "eslint": "^6.5.1",
     "eslint-config-profiscience": "^5.0.2",
