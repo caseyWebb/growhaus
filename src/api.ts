@@ -12,17 +12,28 @@ app.use((ctx) => {
   switch (ctx.method.toUpperCase()) {
     case 'GET':
       ctx.status = 200
-      ctx.body = driver.getBrightness()
+      ctx.body = JSON.stringify({
+        brightness: driver.getBrightness(),
+      })
       break
     case 'POST':
       {
-        const value = parseInt(ctx.request.body)
-        if (isNaN(value) || value < 0 || value > 255) {
+        try {
+          const value = parseInt(ctx.request.body.brightness)
+          if (isNaN(value) || value < 0 || value > 255) {
+            ctx.status = 400
+            ctx.message = `Invalid request body, should be integer between 0-255. Received ${JSON.stringify(
+              ctx.request.body
+            )}`
+          } else {
+            ctx.status = 200
+            driver.setBrightness(value)
+          }
+        } catch (e) {
           ctx.status = 400
-          ctx.message = 'Invalid request body, should be integer between 0-255'
-        } else {
-          ctx.status = 200
-          driver.setBrightness(value)
+          ctx.message = `Invalid request body. Expected object { "brightness": 0-255 }, received ${JSON.stringify(
+            ctx.request.body
+          )}`
         }
       }
       break
