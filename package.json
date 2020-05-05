@@ -1,33 +1,31 @@
 {
+  "name": "@caseywebb/growhaus",
   "version": "1.0.0",
-  "private": true,
   "license": "WTFPL",
-  "workspaces": {
-    "packages": [
-      "lib",
-      "agent",
-      "server",
-      "web"
-    ],
-    "nohoist": [
-      "**/@types/**"
-    ]
-  },
+  "bin": "./bin/growhaus",
+  "files": [
+    "bin",
+    "dist"
+  ],
   "scripts": {
-    "build": "lerna run build",
+    "build": "tsc -b",
+    "start": "node dist/index.js",
     "format": "pretty-quick",
     "test": "jest"
   },
+  "dependencies": {
+    "johnny-five": "^1.2.0",
+    "pi-io": "^1.0.0",
+    "tslib": "^1.10.0"
+  },
   "devDependencies": {
+    "@types/johnny-five": "^1.3.0",
     "@types/jquery": "^3.3.30",
     "@types/lodash": "^4.14.150",
-    "dotenv": "^8.2.0",
     "eslint": "^6.5.1",
     "eslint-config-profiscience": "^5.0.2",
     "husky": "^4.2.5",
-    "is-docker": "^2.0.0",
     "jest": "^26.0.0",
-    "lerna": "^3.18.3",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
     "ts-jest": "^25.4.0"

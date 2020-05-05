@@ -1,0 +1,10 @@
+[Unit]
+Description=Grow Light Automation
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=30
+ExecStart=/home/pi/growhaus/bin/growhaus
+
+

@@ -1,18 +1,20 @@
-import { Subscribable } from '@caseywebb/growhaus'
-
-class Brightness extends Subscribable {
+class LightSchedule {
   public current = 0
 
-  constructor() {
-    super()
-    this.update()
+  private readonly subscriptions: Array<(v: number) => void> = []
 
+  constructor() {
+    this.update()
     setInterval(() => this.update(), 60000)
   }
 
-  public update() {
-    this.current = Brightness.calculate()
-    this.next()
+  public subscribe(cb: (value: number) => any) {
+    this.subscriptions.push(cb)
+  }
+
+  private update() {
+    this.current = LightSchedule.calculate()
+    this.subscriptions.forEach((fn) => fn(this.current))
   }
 
   private static calculate(): number {
@@ -38,4 +40,4 @@ class Brightness extends Subscribable {
   }
 }
 
-export const brightness = new Brightness()
+export const schedule = new LightSchedule()
