@@ -10,6 +10,8 @@ class LedDriver {
 
   private led!: Led
 
+  private brightness = 255
+
   constructor() {
     this.ready = new Promise((resolve) => {
       log('Initializing GPIO...')
@@ -26,12 +28,17 @@ class LedDriver {
     })
   }
 
+  public getBrightness(): number {
+    return this.brightness
+  }
+
   public async setBrightness(intensity: number): Promise<void> {
     await this.ready
     intensity = Math.min(Math.max(intensity, 0), 255)
     log(`Setting brightness to ${intensity}`)
     this.led.on()
     this.led.brightness(255 - intensity)
+    this.brightness = intensity
   }
 }
 
