@@ -1,3 +1,4 @@
+import { startAPIServer } from './api'
 import { driver } from './driver'
 import { log } from './logger'
 import { LightSchedule } from './schedule'
@@ -16,6 +17,8 @@ const quit = (): void => {
   process.off('SIGINT', quit)
 }
 process.on('SIGINT', quit)
+
+startAPIServer()
 
 const schedule = new LightSchedule()
 
