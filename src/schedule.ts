@@ -27,16 +27,16 @@ export class LightSchedule {
     const nowM = now.getMinutes()
 
     if (nowH < dayBegin || nowH > dayEnd) return 0
-    if (nowH > peakBegin && nowH < peakEnd) return 100
+    if (nowH > peakBegin && nowH < peakEnd) return 255
 
     const transitionPeriodLengthInMinutes =
       (nowH < 12 ? peakBegin - dayBegin : dayEnd - peakEnd) * 60
     const transitionPeriodProgressInMinutes =
       (nowH - (nowH < 12 ? dayBegin : peakEnd)) * 60 + nowM
     const progress = Math.round(
-      (100 * transitionPeriodProgressInMinutes) /
+      (255 * transitionPeriodProgressInMinutes) /
         transitionPeriodLengthInMinutes
     )
-    return nowH > 12 ? 100 - progress : progress
+    return nowH > 12 ? 255 - progress : progress
   }
 }

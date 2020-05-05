@@ -2,15 +2,15 @@ import mockdate from 'mockdate'
 
 import { LightSchedule } from './schedule'
 
-testTime(7, 0, -1, 1)
-testTime(7, 3, 0, 5)
-testTime(10, 57, 95, 100)
-testTime(11, 0, 99, 101)
-testTime(12, 0, 99, 101)
-testTime(17, 0, 99, 101)
-testTime(17, 3, 97, 100)
-testTime(20, 57, 0, 5)
-testTime(21, 0, -1, 1)
+testTime(7, 0, 0)
+testTime(7, 1, 1)
+testTime(10, 59, 254)
+testTime(11, 0, 255)
+testTime(12, 0, 255)
+testTime(17, 0, 255)
+testTime(17, 1, 254)
+testTime(20, 59, 1)
+testTime(21, 0, 0)
 
 test('updates automatically', () => {
   jest.useFakeTimers()
@@ -41,18 +41,10 @@ test('calls subscribers on update', (done) => {
   jest.advanceTimersToNextTimer()
 })
 
-function testTime(
-  hour: number,
-  minute: number,
-  lower: number,
-  upper: number
-): void {
-  test(`is between ${lower}% and ${upper}% @ ${hour}:${minute
-    .toString()
-    .padStart(2, '0')}`, () => {
+function testTime(hour: number, minute: number, expected: number): void {
+  test(`is ${expected} @ ${hour}:${minute.toString().padStart(2, '0')}`, () => {
     mockdate.set(new Date(1, 1, 1, hour, minute))
     const schedule = new LightSchedule()
-    expect(schedule.current).toBeGreaterThan(lower)
-    expect(schedule.current).toBeLessThan(upper)
+    expect(schedule.current).toBe(expected)
   })
 }

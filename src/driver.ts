@@ -26,12 +26,12 @@ class LedDriver {
     })
   }
 
-  public async setBrightness(percentage: number): Promise<void> {
+  public async setBrightness(intensity: number): Promise<void> {
     await this.ready
-    percentage = Math.min(Math.max(percentage, 0), 100)
-    log(`Setting brightness to ${percentage}%`)
+    intensity = Math.min(Math.max(intensity, 0), 255)
+    log(`Setting brightness to ${intensity}`)
     this.led.on()
-    this.led.brightness(255 - Math.round((percentage / 100) * 255))
+    this.led.brightness(255 - intensity)
   }
 }
 
