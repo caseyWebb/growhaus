@@ -34,7 +34,7 @@ class LedDriver {
 
   public async setBrightness(intensity: number): Promise<void> {
     await this.ready
-    intensity = Math.min(Math.max(intensity, 0), 255)
+    intensity = Math.min(Math.max(intensity, 26), 255) // Meanwell drivers not intended to be dimmed below 10%
     log(`Setting brightness to ${intensity}`)
     this.led.on()
     this.led.brightness(255 - intensity)
