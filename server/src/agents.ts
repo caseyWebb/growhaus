@@ -1,9 +1,7 @@
-import autobind from 'autobind-decorator'
+import { brightness } from './brightness'
 import * as WebSocket from 'ws'
 
 import { AgentData, Subscribable } from '@caseywebb/growhaus'
-
-import { weather } from './weather'
 
 class Agent extends Subscribable implements AgentData {
   public readonly brightness: number = NaN
@@ -20,29 +18,19 @@ class Agent extends Subscribable implements AgentData {
       this.next()
     })
 
-    this.setBrightnessViaWeather()
-    weather.subscribe(this.setBrightnessViaWeather)
+    brightness.subscribe(() => this.setBrightness(brightness.current))
   }
 
-  private setBrightness(brightness: number, duration = 5) {
+  private setBrightness(brightness: number) {
     console.log(`Setting "${this.name}" to ${brightness}% brightness`)
     this.pending = true
     this.socket.send(
       JSON.stringify({
         event: 'brightness',
         brightness,
-        duration
       })
     )
     this.next()
-  }
-
-  @autobind
-  private setBrightnessViaWeather() {
-    this.setBrightness(
-      weather.current.brightness,
-      weather.reloadIntervalDurationMinutes
-    )
   }
 }
 

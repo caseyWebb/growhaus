@@ -2,7 +2,7 @@ export * from './subscribable'
 
 export enum WebApiEvents {
   AgentData = 'agents',
-  WeatherData = 'weather'
+  WeatherData = 'weather',
 }
 
 export interface WebApiMessage {
@@ -27,12 +27,10 @@ export interface WeatherDataMessage extends WebApiMessage {
 }
 
 export interface CurrentWeatherData {
-  brightness: number
   uvIndex: number
 }
 
 export interface HourlyWeatherDatum {
-  time: number
   uvIndex: number
 }
 

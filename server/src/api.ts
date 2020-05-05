@@ -3,11 +3,10 @@ import * as route from 'koa-route'
 import {
   AgentDataMessage,
   WebApiEvents,
-  WeatherDataMessage
+  WeatherDataMessage,
 } from '@caseywebb/growhaus'
 
 import { agents } from './agents'
-import { weather } from './weather'
 
 export const websocketRoutes = [
   route.all('/agent/:name', (ctx, name: string) => {
@@ -21,16 +20,9 @@ export const websocketRoutes = [
     const sendAgentData = () =>
       send({
         event: WebApiEvents.AgentData,
-        data: agents
-      })
-    const sendWeatherData = () =>
-      send({
-        event: WebApiEvents.WeatherData,
-        data: weather
+        data: agents,
       })
     sendAgentData()
-    sendWeatherData()
     agents.subscribe(sendAgentData)
-    weather.subscribe(sendWeatherData)
-  })
+  }),
 ]
