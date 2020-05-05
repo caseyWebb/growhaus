@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/caseyWebb/growhaus/compare/v1.2.1...v1.2.2) (2020-05-05)
+
+
+### Bug Fixes
+
+* actually fix POST endpoint ([7e08cf7](https://github.com/caseyWebb/growhaus/commit/7e08cf7469520617ea8f96bbbf421e2fb3c8eb3d))
+
 ### [1.2.1](https://github.com/caseyWebb/growhaus/compare/v1.2.0...v1.2.1) (2020-05-05)
 
 ### Bug Fixes
