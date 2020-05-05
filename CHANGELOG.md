@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/caseyWebb/growhaus/compare/v1.2.2...v1.3.0) (2020-05-05)
+
+
+### Features
+
+* add duration option to manual overrides ([c21eae9](https://github.com/caseyWebb/growhaus/commit/c21eae9384d50cdb1062a3e3d6e28ec4a5524625))
+
 ### [1.2.2](https://github.com/caseyWebb/growhaus/compare/v1.2.1...v1.2.2) (2020-05-05)
 
 
