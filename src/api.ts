@@ -1,9 +1,12 @@
 import Koa from 'koa'
+import bodyParser from 'koa-body'
 
 import { driver } from './driver'
 import { log } from './logger'
 
 const app = new Koa()
+
+app.use(bodyParser())
 
 app.use((ctx) => {
   switch (ctx.method.toUpperCase()) {
@@ -13,7 +16,7 @@ app.use((ctx) => {
       break
     case 'POST':
       {
-        const value = parseInt(ctx.response.body)
+        const value = parseInt(ctx.request.body)
         if (isNaN(value) || value < 0 || value > 255) {
           ctx.status = 400
           ctx.message = 'Invalid request body, should be integer between 0-255'
