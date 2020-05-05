@@ -8,11 +8,11 @@ export class LightSchedule {
     setInterval(() => this.update(), 60000)
   }
 
-  public subscribe(cb: (value: number) => any) {
+  public subscribe(cb: (value: number) => void): void {
     this.subscriptions.push(cb)
   }
 
-  private update() {
+  private update(): void {
     this.current = LightSchedule.calculate()
     this.subscriptions.forEach((fn) => fn(this.current))
   }

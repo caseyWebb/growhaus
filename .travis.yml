@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - lts/erbium
+cache:
+  yarn: true
+script:
+  - yarn lint
+  - yarn test
+  - yarn build
+after_script:
+  - npx codecov
+notifications:
+  email: false
+
+deploy:
+  provider: npm
+  email: notcaseywebb@gmail.com
+  api_key:
+    secure: UjNtFwNBc5yk/8sC0uCK8NjW7yTTwHH5UB94bT+X5DnGx7xlxBxzOfmoArBpm1nHfOOoVn6B/iQ/rHae57+TAWAWdOd+Rg3pUch8FOEiid0Tq5KGOCmni2Pm8bduDZGCtbD4ShYP+jT+YPK9k/lDQ3A/Yz3+YQ/XbKcWpjDc7BZn+UzuhW9gnICcy/HRtOBscGAAjM11Y4SMOmkZJz4ORn5sM4Fp5i0UMK+wStZ4nFeA2S3Igr78Isqb4yVL8NluIzmW7rUlmC9EUdv6aHsuQmmnAZubW9DlIjBX7drEz1llCHtbZfgQZ8JE9b4GI4jY4ACvn5ofZhOG+n+Y+HZ/x7wAyJaytRSm08dwhV7uDn7BMhUTY+/1huozY6zMoHiYZBT2gdfrB9phQSBQXgcR2jcKClatx2b4CqB3eI5WTOUsALXY4rRzHJiJddZ7hDLArdzWO9nkbD2qg6QkRhbP+9hopllyOrbJpnH87YPGNJFbhdwPcL+E3W2gaeEKUdWgo/b20GE9I5/+PH2zARq1c2rvbHGQgx3ZFFSQYH8SX9MaF8ZEHnaf88adXoPKs/rgV2ZmqsQHhhgUtpw9AGTrqhupxGPvLmia7d1e80daXof8pyLdOWO82jQFa/mMWIPoFQnX6v0qxPeUPaQsia4N63CwDy0FxdEw/frTBF2M9fM=
+  on:
+    branch: master
+    repo: caseyWebb/growhaus
+  skip_cleanup: 'true'

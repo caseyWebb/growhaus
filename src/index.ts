@@ -1,16 +1,17 @@
 import { driver } from './driver'
+import { log } from './logger'
 import { LightSchedule } from './schedule'
 
-console.log(`Starting agent...`)
+log(`Starting agent...`)
 
 let forceQuit = false
-const quit = () => {
+const quit = (): void => {
   if (forceQuit) {
     process.exit()
   } else {
     forceQuit = true
   }
-  console.log('Exiting... (Press ctrl+c again to force exit)')
+  log('Exiting... (Press ctrl+c again to force exit)')
   driver.setBrightness(100)
   process.off('SIGINT', quit)
 }
@@ -18,4 +19,6 @@ process.on('SIGINT', quit)
 
 const schedule = new LightSchedule()
 
-schedule.subscribe((v) => driver.setBrightness(v))
+schedule.subscribe((v) => {
+  driver.setBrightness(v)
+})

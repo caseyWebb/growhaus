@@ -10,6 +10,7 @@
   "scripts": {
     "build": "tsc -b",
     "start": "node dist/index.js",
+    "lint": "esw --color --ignore-path .gitignore --ext .js,.ts ./",
     "format": "pretty-quick",
     "test": "jest"
   },
@@ -26,8 +27,9 @@
     "@types/mockdate": "^2.0.0",
     "eslint": "^6.5.1",
     "eslint-config-profiscience": "^5.0.2",
+    "eslint-watch": "^6.0.1",
     "husky": "^4.2.5",
-    "jest": "^26.0.0",
+    "jest": "^26.0.1",
     "mockdate": "^2.0.5",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
@@ -58,6 +60,16 @@
       }
     }
   },
+  "eslintConfig": {
+    "extends": [
+      "profiscience"
+    ],
+    "parserOptions": {
+      "project": [
+        "./tsconfig.json"
+      ]
+    }
+  },
   "prettier": {
     "arrowParens": "always",
     "semi": false,
@@ -65,7 +77,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn format --staged"
+      "pre-commit": "yarn format --staged",
+      "pre-push": "yarn lint"
     }
   }
 }

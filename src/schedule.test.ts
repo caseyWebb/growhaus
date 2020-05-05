@@ -41,7 +41,12 @@ test('calls subscribers on update', (done) => {
   jest.advanceTimersToNextTimer()
 })
 
-function testTime(hour: number, minute: number, lower: number, upper: number) {
+function testTime(
+  hour: number,
+  minute: number,
+  lower: number,
+  upper: number
+): void {
   test(`is between ${lower}% and ${upper}% @ ${hour}:${minute
     .toString()
     .padStart(2, '0')}`, () => {
