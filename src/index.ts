@@ -19,6 +19,8 @@ process.on('SIGINT', quit)
 
 const schedule = new LightSchedule()
 
+driver.setBrightness(schedule.current)
+
 schedule.subscribe((v) => {
   driver.setBrightness(v)
 })
