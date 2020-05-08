@@ -1,7 +1,7 @@
 import { startAPIServer } from './api'
 import { driver } from './driver'
 import { log } from './logger'
-import { LightSchedule } from './schedule'
+import { schedule } from './schedule'
 
 log(`Starting agent...`)
 
@@ -19,8 +19,6 @@ const quit = (): void => {
 process.on('SIGINT', quit)
 
 startAPIServer()
-
-const schedule = new LightSchedule()
 
 driver.setBrightness(schedule.current)
 
