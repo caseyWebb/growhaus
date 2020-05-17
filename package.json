@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "johnny-five": "^1.2.0",
-    "koa": "^2.11.0",
+    "koa": "^2.12.0",
     "koa-body": "^4.1.1",
     "pi-io": "^1.0.0",
     "tslib": "^1.12.0"
