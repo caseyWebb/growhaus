@@ -43,7 +43,7 @@
     "pretty-quick": "^2.0.1",
     "standard-version": "^7.1.0",
     "ts-jest": "^25.5.1",
-    "typescript": "^3.9.3"
+    "typescript": "^3.9.5"
   },
   "jest": {
     "collectCoverage": true,
