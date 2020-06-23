@@ -37,7 +37,7 @@
     "eslint-config-profiscience": "^5.0.2",
     "eslint-watch": "^6.0.1",
     "husky": "^4.2.5",
-    "jest": "^26.0.1",
+    "jest": "^26.1.0",
     "mockdate": "^2.0.5",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
