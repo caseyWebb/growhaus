@@ -20,7 +20,7 @@
     "koa": "^2.13.0",
     "koa-body": "^4.2.0",
     "pi-io": "^1.0.0",
-    "tslib": "^2.0.1"
+    "tslib": "^2.0.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
